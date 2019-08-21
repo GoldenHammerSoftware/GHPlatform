@@ -1,0 +1,19 @@
+// Copyright 2010 Golden Hammer Software
+#pragma once
+
+#include "GHPlatform/GHSocketMgr.h"
+
+class GHWinSockSocketMgr : public GHSocketMgr
+{
+public:
+	GHWinSockSocketMgr(void);
+	~GHWinSockSocketMgr(void);
+
+	virtual GHSocket* createSocket(const char* addr, const char* port, GHConnectionType type);
+
+private:
+	void initWinSock(void);
+
+private:
+	bool mWinSockInitialized;
+};

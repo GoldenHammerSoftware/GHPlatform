@@ -2,6 +2,9 @@
 
 GHPlatform provides a way to use common OS features for iOS, win32, uwp, android, and OSX in a platform independent way.  It also contains some C++ extensions.  It contains code we never want to have to write again, so it makes as few architectural decisions as possible.
 
+## Dependencies
+https://github.com/GoldenHammerSoftware/GHString
+
 ## How to use
 
 1) Add the cpp and header files in GHPlatform to your project.
@@ -26,3 +29,5 @@ Printf does not always do what you would expect on every platform.  Instead incl
 ## Time
 
 ## C++ utilities
+
+## GHProperty
