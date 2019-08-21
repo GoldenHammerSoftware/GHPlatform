@@ -1,10 +1,9 @@
 // Copyright 2010 Golden Hammer Software
 #include "GHFileOpener.h"
-#include "GHProfiler.h"
 
 //#define GENERATE_DATA_COPY
 #ifdef GENERATE_DATA_COPY
-#include "GHDebugMessage.h"
+#include "GHPlatform/GHDebugMessage.h"
 static void outputDataCopy(const char* filename, const char* filepath)
 {
 	const char* fileAppend = "";
@@ -20,8 +19,6 @@ static void outputDataCopy(const char* filename, const char* filepath)
 GHFile* GHFileOpener::openFile(const char* filename, GHFile::FileType fileType, 
                                GHFile::FileMode fileMode) const
 {
-    GHPROFILESCOPE("openFile", GHString::CHT_REFERENCE)
-
     GHFile* ret = 0;
 	const int BUF_SZ = 512;
     char nameBuff[BUF_SZ];

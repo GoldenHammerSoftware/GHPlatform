@@ -3,6 +3,7 @@
 
 #include <vector>
 #include "GHFile.h"
+// TODO: remove ghstring
 #include "GHString/GHString.h"
 
 // interface for opening a file.
