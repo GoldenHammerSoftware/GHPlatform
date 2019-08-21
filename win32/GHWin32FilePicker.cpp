@@ -4,7 +4,7 @@
 #include "GHWin32Window.h"
 #include "GHString/GHString.h"
 #include "GHPlatform/GHPropertyContainer.h"
-#include "GHBaseIdentifiers.h"
+#include "GHPlatform/GHPlatformIdentifiers.h"
 
 GHWin32FilePicker::GHWin32FilePicker(GHWin32Window& window)
 : mWindow(window)
@@ -146,7 +146,7 @@ void GHWin32FilePicker::sendPickResults(PickedCallback& callback, IShellItem* pI
 		memset(charbuf, 0, lstrlen(pwsz) + 1);
 		wcstombs(charbuf, pwsz, lstrlen(pwsz));
 		GHString* str = new GHString(charbuf, GHString::CHT_CLAIM);
-		result.setProperty(GHBaseIdentifiers::FILEPATH, GHProperty(str->getChars(), new GHRefCountedType<GHString>(str)));
+		result.setProperty(GHPlatformIdentifiers::FILEPATH, GHProperty(str->getChars(), new GHRefCountedType<GHString>(str)));
 		CoTaskMemFree(pwsz);
 	}
 	hr = pItem->GetDisplayName(SIGDN_PARENTRELATIVEPARSING, &pwsz);
@@ -156,7 +156,7 @@ void GHWin32FilePicker::sendPickResults(PickedCallback& callback, IShellItem* pI
 		memset(charbuf, 0, lstrlen(pwsz) + 1);
 		wcstombs(charbuf, pwsz, lstrlen(pwsz));
 		GHString* str = new GHString(charbuf, GHString::CHT_CLAIM);
-		result.setProperty(GHBaseIdentifiers::FILENAME, GHProperty(str->getChars(), new GHRefCountedType<GHString>(str)));
+		result.setProperty(GHPlatformIdentifiers::FILENAME, GHProperty(str->getChars(), new GHRefCountedType<GHString>(str)));
 		CoTaskMemFree(pwsz);
 	}
 	callback.handleFilePicked(result);

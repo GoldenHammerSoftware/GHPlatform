@@ -7,7 +7,8 @@
 #include "GHLChar.h"
 #include "GHMessageHandler.h"
 #include "GHMessage.h"
-#include "GHBaseIdentifiers.h"
+#include "GHPlatform/GHPlatformIdentifiers.h"
+#include "GHBaseIdentifiers.h" // todo: remove this or move window out of platform.
 
 GHWin32Window::GHWin32Window(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	int nCmdShow, WNDPROC handleWMFunc,
