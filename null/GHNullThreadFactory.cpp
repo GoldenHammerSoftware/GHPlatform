@@ -24,3 +24,4 @@ GHThreadSignal* GHNullThreadFactory::createSignal(void) const
 {
 	return new GHNullThreadSignal();
 }
+
