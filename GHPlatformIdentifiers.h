@@ -17,7 +17,6 @@ GHIDENTIFIER(VAL) // arbitrary val
 GHIDENTIFIER(FILENAME) // name of a file with no path
 GHIDENTIFIER(FILEPATH) // name and path of a file
 GHIDENTIFIER(FILETOKEN) // token used by some os's for accessing a file.
-GHIDENTIFIER(M_RELEASEFILETOKEN) // make any code forget the filetoken stored in VAL
 
 GHIDENTIFIEREND
 

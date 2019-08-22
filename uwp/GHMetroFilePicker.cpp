@@ -9,6 +9,7 @@
 #include "GHMetroIdentifiers.h"
 #include "GHMetroRandomAccessStream.h"
 #include "GHMetroStorageFile.h"
+#include "GHPlatform/GHPlatformIdentifiers.h"
 
 using namespace concurrency;
 
@@ -89,13 +90,13 @@ void GHMetroFilePicker::triggerCallback(PickedCallback& callback, Windows::Stora
 	memset(pathbuf, 0, file->Path->Length() + 1);
 	wcstombs(pathbuf, file->Path->Data(), file->Path->Length());
 	GHString* pathstr = new GHString(pathbuf, GHString::CHT_CLAIM);
-	result.setProperty(GHBaseIdentifiers::FILEPATH, GHProperty(pathstr->getChars(), new GHRefCountedType<GHString>(pathstr)));
+	result.setProperty(GHPlatformIdentifiers::FILEPATH, GHProperty(pathstr->getChars(), new GHRefCountedType<GHString>(pathstr)));
 
 	char* namebuf = new char[file->Name->Length() + 1];
 	memset(namebuf, 0, file->Name->Length() + 1);
 	wcstombs(namebuf, file->Name->Data(), file->Name->Length());
 	GHString* namestr = new GHString(namebuf, GHString::CHT_CLAIM);
-	result.setProperty(GHBaseIdentifiers::FILENAME, GHProperty(namestr->getChars(), new GHRefCountedType<GHString>(namestr)));
+	result.setProperty(GHPlatformIdentifiers::FILENAME, GHProperty(namestr->getChars(), new GHRefCountedType<GHString>(namestr)));
 
 	GHMetroRandomAccessStream* ghStream = new GHMetroRandomAccessStream;
 	ghStream->mStream = stream;
@@ -111,7 +112,7 @@ void GHMetroFilePicker::triggerCallback(PickedCallback& callback, Windows::Stora
 	memset(tokenBuff, 0, futureAccessToken->Length() + 1);
 	wcstombs(tokenBuff, futureAccessToken->Data(), futureAccessToken->Length());
 	GHString* tokenStr = new GHString(tokenBuff, GHString::CHT_CLAIM);
-	result.setProperty(GHBaseIdentifiers::FILETOKEN, GHProperty(tokenStr->getChars(), new GHRefCountedType<GHString>(tokenStr)));
+	result.setProperty(GHPlatformIdentifiers::FILETOKEN, GHProperty(tokenStr->getChars(), new GHRefCountedType<GHString>(tokenStr)));
 
 	callback.handleFilePicked(result);
 }
