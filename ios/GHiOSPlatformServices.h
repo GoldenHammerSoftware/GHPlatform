@@ -4,7 +4,7 @@
 #include "GHPlatform/GHPlatformServices.h"
 #include "GHiOSFileOpener.h"
 #include "GHPlatform/null/GHNullFilePicker.h"
-#include "GHPlatform/null/GHNullSocketMgr.h"
+#include "GHCFSocketMgr.h"
 #include "GHiOSThreadFactory.h"
 #include "GHiOSTimeCalculator.h"
 
@@ -24,5 +24,5 @@ private:
     GHNullFilePicker mFilePicker;
     GHiOSThreadFactory mThreadFactory;
     GHiOSTimeCalculator mTimeCalculator;
-    GHNullSocketMgr mSocketMgr;
+    GHCFSocketMgr mSocketMgr;
 };
