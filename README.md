@@ -20,7 +20,14 @@ Printf does not always do what you would expect on every platform.  Instead incl
 
 ## File access
 
+*  GHFileOpener - Platform independent file opener.  Add resource paths to look in multiple directories.
+*  GHFile - Platform independent file access.
+*  GHFileC / GHFOpenFileOpener - fopen implementation of file access.
+*  GHXorFile - A simple xor encrypted file wrapper for mild security.
+
 ## Bytestream
+
+Bytestream is a way to efficiently iterate a stream of data.  We've used this in beat line to process streaming song data.  It can be used as an interface for dealing with data that could come from either a file on disk or a streaming internet feed.
 
 ## Threads
 

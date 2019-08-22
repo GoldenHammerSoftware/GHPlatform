@@ -11,7 +11,7 @@
 class GHNullPlatformServices : public GHPlatformServices
 {
 public:
-	virtual GHFileOpener& getFileOpener(void) override { mFileOpener; }
+	virtual GHFileOpener& getFileOpener(void) override { return mFileOpener; }
 	virtual GHFilePicker& getFilePicker(void) override { return mFilePicker; }
 	virtual GHThreadFactory& getThreadFactory(void) override { return mThreadFactory; }
 	virtual GHTimeCalculator& getTimeCalculator(void) override { return mTimeCalculator; }
