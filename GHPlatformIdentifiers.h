@@ -19,9 +19,6 @@ GHIDENTIFIER(FILEPATH) // name and path of a file
 GHIDENTIFIER(FILETOKEN) // token used by some os's for accessing a file.
 GHIDENTIFIER(M_RELEASEFILETOKEN) // make any code forget the filetoken stored in VAL
 
-GHIDENTIFIER(FULLSCREENSUPPORTED) // true if the platform supports separate windowed/fullscreen modes
-GHIDENTIFIER(ISFULLSCREEN) // true if the app is not currently fullscreen
-
 GHIDENTIFIEREND
 
 #include "GHString/GHEnumEnd.h"
