@@ -1,13 +1,12 @@
 // Copyright 2010 Golden Hammer Software
 #include "GHWin32FilePicker.h"
 #include "GHWin32Include.h"
-#include "GHWin32Window.h"
 #include "GHString/GHString.h"
 #include "GHPlatform/GHPropertyContainer.h"
 #include "GHPlatform/GHPlatformIdentifiers.h"
 
-GHWin32FilePicker::GHWin32FilePicker(GHWin32Window& window)
-: mWindow(window)
+GHWin32FilePicker::GHWin32FilePicker(HWND hwnd)
+: mHwnd(hwnd)
 {
 }
 
@@ -26,7 +25,7 @@ void GHWin32FilePicker::pickFile(PickedCallback& callback, const std::vector<con
 
 	pDlg->SetTitle(L"Pick a file");
 	
-	HRESULT hr = pDlg->Show(mWindow.getHWND());
+	HRESULT hr = pDlg->Show(mHwnd);
 	delete[] wExts;
 
 	if (SUCCEEDED(hr))
@@ -67,7 +66,7 @@ void GHWin32FilePicker::pickMultipleFiles(PickedCallback& callback, const std::v
 	pDlg->GetOptions(&dwFlags);
 	pDlg->SetOptions(dwFlags | FOS_ALLOWMULTISELECT | FOS_PATHMUSTEXIST | FOS_FORCEFILESYSTEM);
 
-	HRESULT hr = pDlg->Show(mWindow.getHWND());
+	HRESULT hr = pDlg->Show(mHwnd);
 	delete[] wExts;
 
 	bool sentAtLeastOne = false;

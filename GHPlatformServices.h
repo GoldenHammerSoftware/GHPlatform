@@ -24,7 +24,6 @@ public:
 	virtual GHThreadFactory& getThreadFactory(void) = 0;
 	virtual GHTimeCalculator& getTimeCalculator(void) = 0;
 	virtual GHSocketMgr& getSocketMgr(void) = 0;
-	virtual GHWindow& getWindow(void) = 0;
 
 	GHStringIdFactory& getIdFactory(void) { return mIdFactory; }
 	GHIdentifierMap<int>& getEnumStore(void) { return mEnumStore; }

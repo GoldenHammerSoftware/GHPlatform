@@ -5,12 +5,10 @@
 #include <atlbase.h>
 #include <Shobjidl.h>
 
-class GHWin32Window;
-
 class GHWin32FilePicker : public GHFilePicker
 {
 public:
-	GHWin32FilePicker(GHWin32Window& window);
+	GHWin32FilePicker(HWND hwnd);
 
 	virtual void pickFile(PickedCallback& callback, const std::vector<const char*> exts);
 	virtual void pickMultipleFiles(PickedCallback& callback, const std::vector<const char*> exts);
@@ -21,5 +19,5 @@ private:
 	void sendPickResults(PickedCallback& callback, IShellItem* item);
 
 private:
-	GHWin32Window& mWindow;
+	HWND mHwnd;
 };
