@@ -1,6 +1,7 @@
 // Copyright 2010 Golden Hammer Software
 #include "GHMetroOutputPipe.h"
-#include "pch.h"
+#include <string.h>
+#include <windows.h>
 
 void GHMetroOutputPipe::outputString(const char* str)
 {

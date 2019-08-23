@@ -1,7 +1,7 @@
 // Copyright 2010 Golden Hammer Software
-#include "GHPlatform/GHControllerTransition.h"
-#include "GHPlatform/GHControllerMgr.h"
-#include "GHPlatform/GHController.h"
+#include "GHControllerTransition.h"
+#include "GHControllerMgr.h"
+#include "GHController.h"
 
 GHControllerTransition::GHControllerTransition(GHControllerMgr& controllerMgr, GHController* controller,
                                                float priority)

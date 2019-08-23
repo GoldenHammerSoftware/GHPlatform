@@ -1,7 +1,7 @@
 // Copyright 2010 Golden Hammer Software
 #pragma once
 
-#include "GHPlatform/GHMessageHandler.h"
+#include "GHMessageHandler.h"
 #include "GHString/GHIdentifier.h"
 #include <vector>
 #include <map>

@@ -1,8 +1,8 @@
 // Copyright 2010 Golden Hammer Software
-#include "GHPlatform/GHResourceFactory.h"
+#include "GHResourceFactory.h"
 #include "GHString/GHStringIdFactory.h"
-#include "GHPlatform/GHResourceCache.h"
-#include "GHPlatform/GHResource.h"
+#include "GHResourceCache.h"
+#include "GHResource.h"
 #include <stdarg.h>
 #include <stddef.h>
 #include <string.h>

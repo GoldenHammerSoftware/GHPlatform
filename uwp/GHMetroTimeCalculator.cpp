@@ -1,5 +1,6 @@
 // Copyright 2010 Golden Hammer Software
 #include "GHMetroTimeCalculator.h"
+#include <windows.h>
 
 GHMetroTimeCalculator::GHMetroTimeCalculator(void)
 {

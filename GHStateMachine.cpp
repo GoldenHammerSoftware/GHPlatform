@@ -1,7 +1,7 @@
 // Copyright 2010 Golden Hammer Software
-#include "GHPlatform/GHStateMachine.h"
+#include "GHStateMachine.h"
 #include <set>
-#include "GHPlatform/GHTransition.h"
+#include "GHTransition.h"
 #include <algorithm>
 #include <assert.h>
 

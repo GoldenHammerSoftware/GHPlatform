@@ -2,7 +2,7 @@
 #pragma once
 
 #include "GHPlatform/GHTimeCalculator.h"
-#include "pch.h"
+#include <Windows.h> // not super happy about including this here for LARGE_INTEGER.
 
 class GHMetroTimeCalculator : public GHTimeCalculator
 {

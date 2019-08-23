@@ -5,11 +5,10 @@
 #include <wrl.h>
 #include <ppltasks.h>  
 #include "GHPlatform/GHPropertyContainer.h"
-#include "GHBaseIdentifiers.h"
-#include "GHMetroIdentifiers.h"
 #include "GHMetroRandomAccessStream.h"
 #include "GHMetroStorageFile.h"
 #include "GHPlatform/GHPlatformIdentifiers.h"
+#include "GHMetroIdentifiers.h"
 
 using namespace concurrency;
 

@@ -2,7 +2,7 @@
 #pragma once
 
 #include "GHString/GHIdentifier.h"
-#include "GHPlatform/GHPropertyContainer.h"
+#include "GHPropertyContainer.h"
 
 // A class for encapsulating an arbitrary message.
 class GHMessage
