@@ -6,8 +6,8 @@
 class GHCocoaThreadFactory : public GHThreadFactory
 {
 public:
-	virtual GHThread* createThread(GHThread::Priority pri) const;
-	virtual GHMutex* createMutex(void) const;
-	virtual GHThreadSleeper* createSleeper(void) const;
-    virtual GHThreadSignal* createSignal(void) const;
+	virtual GHThread* createThread(GHThread::Priority pri) const override;
+	virtual GHMutex* createMutex(void) const override;
+	virtual GHThreadSleeper* createSleeper(void) const override;
+    virtual GHThreadSignal* createSignal(void) const override;
 };

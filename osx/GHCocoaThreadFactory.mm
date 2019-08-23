@@ -3,7 +3,7 @@
 #include "GHCocoaThread.h"
 #include "GHCocoaMutex.h"
 #include "GHCocoaThreadSleeper.h"
-#include "GHPlatform/null/GHNullThreadSignal.h"
+#include "GHNullThreadSignal.h"
 
 GHThread* GHCocoaThreadFactory::createThread(GHThread::Priority pri) const
 {
