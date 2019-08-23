@@ -1,0 +1,26 @@
+// Copyright 2019 Golden Hammer Software
+#pragma once
+
+#include "GHPlatform/GHPlatformServices.h"
+#include "GHCocoaTimeCalculator.h"
+#include "GHCocoaFileOpener.h"
+#include "GHCocoaThreadFactory.h"
+#include "GHPlatform/null/GHNullFilePicker.h"
+#include "GHPlatform/null/GHNullSocketMgr.h"
+
+class GHCocoaPlatformServices : public GHPlatformServices
+{
+public:
+    virtual GHFileOpener& getFileOpener(void) { return mFileOpener; }
+    virtual GHFilePicker& getFilePicker(void) { return mFilePicker; }
+    virtual GHThreadFactory& getThreadFactory(void) { return mThreadFactory; }
+    virtual GHTimeCalculator& getTimeCalculator(void) { return mTimeCalculator; }
+    virtual GHSocketMgr& getSocketMgr(void) { return mSocketMgr; }
+    
+private:
+    GHCocoaTimeCalculator mTimeCalculator;
+    GHCocoaFileOpener mFileOpener;
+    GHCocoaThreadFactory mThreadFactory;
+    GHNullFilePicker mFilePicker;
+    GHNullSocketMgr mSocketMgr;
+};
