@@ -43,6 +43,9 @@
     <Filter Include="profiler">
       <UniqueIdentifier>{f32e7f78-eb10-4699-ba03-583af0da5649}</UniqueIdentifier>
     </Filter>
+    <Filter Include="resource">
+      <UniqueIdentifier>{f636e220-2366-4992-882b-a7466f2326a4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\GHPlatformIdentifiers.h" />
@@ -254,6 +257,18 @@
     <ClInclude Include="..\..\GHTypedVoidFuncRunnable.h">
       <Filter>thread</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\GHResource.h">
+      <Filter>resource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GHResourceCache.h">
+      <Filter>resource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GHResourceFactory.h">
+      <Filter>resource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GHResourceLoader.h">
+      <Filter>resource</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\GHPlatformServices.cpp" />
@@ -352,6 +367,15 @@
     </ClCompile>
     <ClCompile Include="..\..\GHXorFile.cpp">
       <Filter>file</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GHResource.cpp">
+      <Filter>resource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GHResourceCache.cpp">
+      <Filter>resource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GHResourceFactory.cpp">
+      <Filter>resource</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -50,6 +50,10 @@
     <ClInclude Include="..\..\GHPropertyContainer.h" />
     <ClInclude Include="..\..\GHRefCounted.h" />
     <ClInclude Include="..\..\GHRefCountedDeletionHandle.h" />
+    <ClInclude Include="..\..\GHResource.h" />
+    <ClInclude Include="..\..\GHResourceCache.h" />
+    <ClInclude Include="..\..\GHResourceFactory.h" />
+    <ClInclude Include="..\..\GHResourceLoader.h" />
     <ClInclude Include="..\..\GHRunnable.h" />
     <ClInclude Include="..\..\GHSocket.h" />
     <ClInclude Include="..\..\GHSocketMgr.h" />
@@ -110,6 +114,9 @@
     <ClCompile Include="..\..\GHProperty.cpp" />
     <ClCompile Include="..\..\GHPropertyContainer.cpp" />
     <ClCompile Include="..\..\GHRefCounted.cpp" />
+    <ClCompile Include="..\..\GHResource.cpp" />
+    <ClCompile Include="..\..\GHResourceCache.cpp" />
+    <ClCompile Include="..\..\GHResourceFactory.cpp" />
     <ClCompile Include="..\..\GHStateMachine.cpp" />
     <ClCompile Include="..\..\GHTimeUpdater.cpp" />
     <ClCompile Include="..\..\GHTimeVal.cpp" />
