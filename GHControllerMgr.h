@@ -1,7 +1,7 @@
 // Copyright 2010 Golden Hammer Software
 #pragma once
 
-#include "GHPlatform/GHPrioritizedList.h"
+#include "GHPrioritizedList.h"
 
 class GHController;
 

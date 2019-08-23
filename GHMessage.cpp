@@ -1,5 +1,5 @@
 // Copyright 2010 Golden Hammer Software
-#include "GHPlatform/GHMessage.h"
+#include "GHMessage.h"
 
 GHMessage::GHMessage(GHIdentifier type, GHPropertyContainer* data)
 :	mMessageType(type)

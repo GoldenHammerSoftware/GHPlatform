@@ -1,10 +1,10 @@
 // Copyright 2010 Golden Hammer Software
-#include "GHPlatform/GHMessageQueue.h"
-#include "GHPlatform/GHThreadFactory.h"
-#include "GHPlatform/GHMutex.h"
-#include "GHPlatform/GHMessage.h"
-#include "GHPlatform/GHStlUtil.h"
-#include "GHPlatform/GHDebugMessage.h"
+#include "GHMessageQueue.h"
+#include "GHThreadFactory.h"
+#include "GHMutex.h"
+#include "GHMessage.h"
+#include "GHStlUtil.h"
+#include "GHDebugMessage.h"
 
 GHMessageQueue::GHMessageQueue(const GHThreadFactory* threadFactory)
 : mWaitlistMutex(0)

@@ -1,6 +1,6 @@
 // Copyright 2010 Golden Hammer Software
-#include "GHPlatform/GHControllerMgr.h"
-#include "GHPlatform/GHController.h"
+#include "GHControllerMgr.h"
+#include "GHController.h"
 
 void GHControllerMgr::update(void)
 {

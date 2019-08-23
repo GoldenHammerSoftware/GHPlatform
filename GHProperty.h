@@ -1,9 +1,9 @@
 // Copyright 2010 Golden Hammer Software
 #pragma once
 
-#include "GHPlatform/GHStaticAssert.h"
+#include "GHStaticAssert.h"
 #include <string.h>
-#include "GHPlatform/GHRefCounted.h"
+#include "GHRefCounted.h"
 #include <memory.h>
 
 // A property is a generic chunk of data pushed into a void*.

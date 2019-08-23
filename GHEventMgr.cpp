@@ -1,6 +1,6 @@
 // Copyright 2010 Golden Hammer Software
-#include "GHPlatform/GHEventMgr.h"
-#include "GHPlatform/GHMessage.h"
+#include "GHEventMgr.h"
+#include "GHMessage.h"
 #include <algorithm>
 #include <cassert>
 
