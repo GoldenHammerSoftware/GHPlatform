@@ -4,7 +4,7 @@
 #include <string.h>
 #include <wrl.h>
 #include <ppltasks.h>  
-#include "GHPropertyContainer.h"
+#include "GHPlatform/GHPropertyContainer.h"
 #include "GHBaseIdentifiers.h"
 #include "GHMetroIdentifiers.h"
 #include "GHMetroRandomAccessStream.h"

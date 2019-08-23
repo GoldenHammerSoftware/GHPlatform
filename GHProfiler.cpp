@@ -1,11 +1,11 @@
 // Copyright 2010 Golden Hammer Software
-#include "GHPlatform/GHProfiler.h"
+#include "GHProfiler.h"
 #include "GHProfileRecord.h"
-#include "GHPlatform/GHTimeCalculator.h"
-#include "GHPlatform/GHDebugMessage.h"
+#include "GHTimeCalculator.h"
+#include "GHDebugMessage.h"
 #include <vector>
 #include <algorithm>
-#include "GHPlatform/GHMutex.h"
+#include "GHMutex.h"
 
 struct ProfileRecordLess
 {

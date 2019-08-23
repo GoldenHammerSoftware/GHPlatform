@@ -3,7 +3,7 @@
 #include "GHMetroThread.h"
 #include "GHMetroMutex.h"
 #include "GHMetroThreadSleeper.h"
-#include "GHNullThreadSignal.h"
+#include "GHPlatform/null/GHNullThreadSignal.h"
 
 GHThread* GHMetroThreadFactory::createThread(GHThread::Priority pri) const
 {
