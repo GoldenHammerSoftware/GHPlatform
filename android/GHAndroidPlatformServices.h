@@ -14,7 +14,7 @@
 class GHAndroidPlatformServices : public GHPlatformServices
 {
 public:
-	GHAndroidPlatformServices(GHJNIMgr& jniMgr, jobject engineInterface, const char* sdCardPrefix);
+	GHAndroidPlatformServices(GHJNIMgr& jniMgr, jobject engineInterface, const char* sdCardPrefix, jobject jAssetMgr);
 
 	virtual GHFileOpener& getFileOpener(void) { return mFileOpener; }
 	virtual GHFilePicker& getFilePicker(void) { return mFilePicker; }

@@ -5,7 +5,10 @@
 #include <unistd.h>
 #include <cassert>
 #include "GHPlatform/android/GHJNIMgr.h"
+#include <android/asset_manager.h> 
+#include <android/asset_manager_jni.h>
 
+// Deprecated: now using ndk assetmgr
 namespace {
 	struct GHAndroidLoadedFileInfo
 	{
@@ -16,6 +19,7 @@ namespace {
 	};
 }
 
+// Deprecated: now using ndk assetmgr
 jfieldID getFileDescriptorID(JNIEnv& jniEnv)
 {
 	jclass fileDescriptorClass = jniEnv.FindClass("java/io/FileDescriptor");
@@ -31,6 +35,7 @@ jfieldID getFileDescriptorID(JNIEnv& jniEnv)
 	return fieldID;
 }
 
+// Deprecated: now using ndk assetmgr
 extern "C"
 __attribute__((visibility("default")))
 void
@@ -53,16 +58,18 @@ Java_goldenhammer_ghbase_GHEngineInterface_loadFile(JNIEnv* env, jobject thiz, j
 	fileInfo->mLength = length;
 }
 
-GHAndroidFileOpener::GHAndroidFileOpener(GHJNIMgr& jniMgr, jobject jobj, const char* sdCardPrefix)
-: mJNIMgr(jniMgr)
-, mJObject(jobj)
-, mMethodID(0)
+GHAndroidFileOpener::GHAndroidFileOpener(GHJNIMgr& jniMgr, jobject jobj, const char* sdCardPrefix, jobject jAssetMgr)
+	: mJNIMgr(jniMgr)
+	, mJObject(jobj)
+	, mMethodID(0)
+	, mJAssetMgr(jAssetMgr)
 {
     mSDCardPrefix.setConstChars(sdCardPrefix, GHString::CHT_COPY);
     
+	// Deprecated: now using ndk assetmgr
 	jclass cls = mJNIMgr.getJNIEnv().GetObjectClass(mJObject);
 	if(cls == 0) {
-		GHDebugMessage::outputString("GHAndroidFileOpener can't find class where loadRawFile method should exist\n.");
+		GHDebugMessage::outputString("GHAndroidFileOpener can't find class where getFileDescription method should exist\n.");
 	}
 	mMethodID = mJNIMgr.getJNIEnv().GetMethodID(cls, "getFileDescription", "(Ljava/lang/String;J)V");
 	if(mMethodID == 0) {
@@ -126,8 +133,48 @@ GHFile* GHAndroidFileOpener::openFileFromSDCard(const char* filename, const char
 
 GHFile* GHAndroidFileOpener::openFileFromAPK(const char* filename, GHFile::FileType fileType, GHFile::FileMode fileMode) const
 {
-	// This is calling through to custom GH java code.
-	// todo: replace with ndk calls.
+	AAssetManager* mgr = AAssetManager_fromJava(&mJNIMgr.getJNIEnv(), mJAssetMgr);
+	AAsset* loadedAsset = AAssetManager_open(mgr, filename, AASSET_MODE_UNKNOWN);
+	if (!loadedAsset)
+	{
+	    // try adding .mp3 to the end.
+	    // in days gone past we couldn't put an uncompressed file in assets without renaming to .mp3
+	    // not sure if that's still the case but we have a lot of data following that standard.
+	    char renameBuff[2048];
+	    snprintf(renameBuff, 2048, "%s.mp3", filename);
+        loadedAsset = AAssetManager_open(mgr, renameBuff, AASSET_MODE_UNKNOWN);
+        if (!loadedAsset)
+        {
+            GHDebugMessage::outputString("Failed to AAssetManager_open %s", filename);
+            return 0;
+        }
+	}
+
+	GHFile* ret = 0;
+
+	off_t assetStart;
+	off_t assetLen;
+	int assetFD = AAsset_openFileDescriptor(loadedAsset, &assetStart, &assetLen);
+	AAsset_close(loadedAsset);
+	if (assetFD >= 0)
+	{
+		FILE* file = fdopen(assetFD, "rb");
+		if (!file) {
+			GHDebugMessage::outputString("Unable to open FILE for file descriptor.");
+			return ret;
+		}
+
+		fseek(file, assetStart, SEEK_SET);
+		ret = new GHFileC(file, fileType, fileMode, assetLen);
+	}
+	else
+	{
+		GHDebugMessage::outputString("Failed to get file descriptor for %s", filename);
+	}
+
+	return ret;
+
+	/* old code that required using custom java code to open asset files.
 	
 	jstring javaFilename = mJNIMgr.getJNIEnv().NewStringUTF(filename);
 	if(javaFilename == 0) {
@@ -146,4 +193,5 @@ GHFile* GHAndroidFileOpener::openFileFromAPK(const char* filename, GHFile::FileT
 	}
     
 	return new GHFileC(retFILE, fileType, fileMode, loadedFileInfo.mLength);
+	*/
 }

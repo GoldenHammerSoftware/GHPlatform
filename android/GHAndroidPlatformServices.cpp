@@ -4,10 +4,10 @@
 #include "GHPlatform/GHProfiler.h"
 #include "GHPlatform/GHThreadFactory.h"
 
-GHAndroidPlatformServices::GHAndroidPlatformServices(GHJNIMgr& jniMgr, jobject engineInterface, const char* sdCardPrefix)
+GHAndroidPlatformServices::GHAndroidPlatformServices(GHJNIMgr& jniMgr, jobject engineInterface, const char* sdCardPrefix, jobject jAssetMgr)
 	: GHPlatformServices()
 	, mTimeCalculator(jniMgr, engineInterface)
-	, mFileOpener(jniMgr, engineInterface, sdCardPrefix)
+	, mFileOpener(jniMgr, engineInterface, sdCardPrefix, jAssetMgr)
 	, mThreadFactory(jniMgr)
 {
 	GHDebugMessage::init(mOutputPipe);

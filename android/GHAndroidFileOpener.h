@@ -11,7 +11,7 @@ class GHJNIMgr;
 class GHAndroidFileOpener : public GHFileOpener
 {
 public:
-    GHAndroidFileOpener(GHJNIMgr& jniMgr, jobject jobj, const char* sdCardPrefix);
+    GHAndroidFileOpener(GHJNIMgr& jniMgr, jobject jobj, const char* sdCardPrefix, jobject jAssetMgr);
 
 protected:
 	virtual GHFile* openPlatformFile(const char* filename, GHFile::FileType fileType, GHFile::FileMode fileMode) const;
@@ -23,6 +23,7 @@ protected:
     
 private:
 	GHJNIMgr& mJNIMgr;
+	jobject mJAssetMgr;
 	jobject mJObject;
 	jmethodID mMethodID;
 	GHString mSDCardPrefix;
