@@ -8,11 +8,13 @@
 #include "GHMetroThreadFactory.h"
 #include "GHMetroTimeCalculator.h"
 #include "GHMetroSocketMgr.h"
+#include "GHMetroOutputPipe.h"
 
 class GHMetroPlatformServices : public GHPlatformServices
 {
 public:
 	GHMetroPlatformServices(void);
+	~GHMetroPlatformServices(void);
 
 	virtual GHFileOpener& getFileOpener(void) override { return mFileOpener; }
 	virtual GHFilePicker& getFilePicker(void) override { return mFilePicker; }
@@ -26,4 +28,6 @@ private:
 	GHMetroThreadFactory mThreadFactory;
 	GHMetroTimeCalculator mTimeCalculator;
 	GHMetroSocketMgr mSocketMgr;
+	GHMetroOutputPipe mOutputPipe;
+
 };

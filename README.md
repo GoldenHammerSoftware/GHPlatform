@@ -14,6 +14,10 @@ https://github.com/GoldenHammerSoftware/GHString - Install adjacent to where you
 5) Have your code ask the GHPlatformServices interface for the platform independent factories.
 6) Use any platform independent classes directly.
 
+## GHPlatformServices
+
+A central handle for the platform-specific implementation of interfaces that require platform code.  GHWin32PlatformServices will give you platform-independent interfaces that are implemented with specific win32 code.
+
 ## Debug output
 
 Printf does not always do what you would expect on every platform.  Instead include "GHPlatform/GHDebugMessage.h" and use GHDebugMessage::outputString("message");
@@ -49,6 +53,16 @@ Bytestream is a way to efficiently iterate a stream of data.  We've used this in
 *  GHTimeUpdater - Controller for incrementing a GHTimeVal to represent the new most current point in time.
 
 ## C++ utilities
+
+*  GHDeletionHandle - A class with a virtual destructor for storage in an ownership list for later deletion.
+*  GHTypedDeletionHandle<T> - A templated way to use any non-virtual object in an ownership list.
+*  GHOwnershipList - A way to store and delete a bunch of components held by GHDeletionHandles.
+*  GHPrioritizedList - A list of objects sorted by priority.
+*  GHRefCounted - An interface for something that is meant to be used as a shared pointer that is deleted when no longer in use.
+*  GHRefCountedType<T> - A way to store a non virtual object as a ref counted object.
+*  GHRefCountedDeletionHandle - A way to store a GHRefCounted release() in an ownship list instead of a destructable object.
+*  GHSTATICASSERT - A way to catch some compile time errors.
+*  GHSTLUtil - Some handy STL functions.
 
 ## Property 
 
