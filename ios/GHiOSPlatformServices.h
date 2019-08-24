@@ -7,6 +7,7 @@
 #include "GHCFSocketMgr.h"
 #include "GHiOSThreadFactory.h"
 #include "GHiOSTimeCalculator.h"
+#include "GHiOSOutputPipe.h"
 
 class GHiOSPlatformServices : public GHPlatformServices
 {
@@ -25,4 +26,5 @@ private:
     GHiOSThreadFactory mThreadFactory;
     GHiOSTimeCalculator mTimeCalculator;
     GHCFSocketMgr mSocketMgr;
+    GHiOSOutputPipe mOutputPipe;
 };
