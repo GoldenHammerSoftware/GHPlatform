@@ -4,6 +4,7 @@ GHPlatform provides a way to use common OS features for iOS, win32, uwp, android
 
 ## Dependencies
 https://github.com/GoldenHammerSoftware/GHString - Install adjacent to where you install GHPlatform.
+If any additional dependencies are found mail dev@goldenhammersoftware.com and we'll either remove the dependency or bring that code into GHPlatform.
 
 ## How to use
 
@@ -93,7 +94,13 @@ GHStateMachine manages switching between various states.  Each state has a list 
 
 ## Profiler
 
-A lightweight way to get performance information about your code.
+A lightweight way to get performance information about your code.  The macros are no-ops if GHRETAIL is defined.
+
+*  Put GHPROFILESCOPE("arbitrary id string", GHString::CHT_REFERENCE) inside full functions or scope.
+*  To profile within a scope use GHPROFILEBEGIN("string") and GHPROFILEEND("string").
+*  Run a profile by putting GHPROFILESTART and GHPROFILESTOP somewhere.
+*  Output the results to debug print by using GHPROFILEOUTPUT.
+*  Reset the profile with GHPROFILECLEAR.
 
 ## Resource
 
