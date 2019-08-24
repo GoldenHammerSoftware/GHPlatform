@@ -15,5 +15,4 @@ GHMetroPlatformServices::GHMetroPlatformServices(void)
 
 GHMetroPlatformServices::~GHMetroPlatformServices(void)
 {
-	GHDebugMessage::shutdown();
 }
