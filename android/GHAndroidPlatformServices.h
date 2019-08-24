@@ -7,6 +7,7 @@
 #include "GHAndroidThreadFactory.h"
 #include "GHAndroidTimeCalculator.h"
 #include "GHAndroidSocketMgr.h"
+#include "GHAndroidOutputPipe.h"
 
 #include <jni.h>
 
@@ -27,4 +28,5 @@ private:
 	GHAndroidThreadFactory mThreadFactory;
 	GHAndroidTimeCalculator mTimeCalculator;
 	GHAndroidSocketMgr mSocketMgr;
+	GHAndroidOutputPipe mOutputPipe;
 };

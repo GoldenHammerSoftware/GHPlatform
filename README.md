@@ -66,6 +66,9 @@ Bytestream is a way to efficiently iterate a stream of data.  We've used this in
 
 ## Property 
 
+*  GHPropertyContainer - A way to store arbitrary data on an object without knowing about it at compile time.  This is used as the data packet for messages for example.
+*  GHProperty - An arbitrary chunk of data.  This can be a straight numeric type, a pointer to an object with a known life span, or a ref counted object.
+
 ## Message
 
 *  GHMessage - An arbitrary chunk of data with an identifier.

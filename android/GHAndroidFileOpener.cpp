@@ -126,7 +126,10 @@ GHFile* GHAndroidFileOpener::openFileFromSDCard(const char* filename, const char
 
 GHFile* GHAndroidFileOpener::openFileFromAPK(const char* filename, GHFile::FileType fileType, GHFile::FileMode fileMode) const
 {
-    jstring javaFilename = mJNIMgr.getJNIEnv().NewStringUTF(filename);
+	// This is calling through to custom GH java code.
+	// todo: replace with ndk calls.
+	
+	jstring javaFilename = mJNIMgr.getJNIEnv().NewStringUTF(filename);
 	if(javaFilename == 0) {
 		GHDebugMessage::outputString("GHAndroidFileOpener::openFileFromAPK: Java won't give us a string. OOM?");
 		return 0;
