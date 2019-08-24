@@ -31,6 +31,12 @@ Bytestream is a way to efficiently iterate a stream of data.  We've used this in
 
 ## Threads
 
+*  GHThreadFactory - Platform interface for creating all things threaded.
+*  GHRunnable - Interface for something that can be run by a thread.
+*  GHThread - Manages running a GHRunnable in a platform thread.
+*  GHThreadSleeper - A way to make a thread pause.
+*  GHThreadSignal - A way to use signals to pause worker threads until an event happens.
+
 ## Sockets
 
 *  GHSocket - Interface for sending/receiving on a platform socket.
@@ -71,3 +77,10 @@ GHStateMachine manages switching between various states.  Each state has a list 
 A lightweight way to get performance information about your code.
 
 ## Resource
+
+Wrapper for things loaded from disk.  These are ref counted and allow sharing.
+
+*  GHResource - Base class for a thing that can be loaded from a GHResourceFactory.
+*  GHResourcePtr<T> - Templated way to treat a non-virtual object as a GHResource.
+*  GHResourceLoader - A loading function for a specific type of resource.
+*  GHResourceFactory - A list of loaders for file extensions.  Call getUniqueResource or getCacheResource depending on whether you want a shared copy.
