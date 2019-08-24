@@ -16,7 +16,9 @@ https://github.com/GoldenHammerSoftware/GHString - Install adjacent to where you
 
 ## GHPlatformServices
 
-A central handle for the platform-specific implementation of interfaces that require platform code.  GHWin32PlatformServices will give you platform-independent interfaces that are implemented with specific win32 code.
+A central handle for the platform-specific implementation of interfaces that require platform code.  GHWin32PlatformServices will give you platform-independent interfaces that are implemented with specific win32 code.  Having a central object for each platform gives us a place to do stuff like initialize the correct GHOutputPipe implementation for GHDebugMessage.
+
+There should be exactly one instance of GHPlatformServices in existence.  
 
 ## Debug output
 

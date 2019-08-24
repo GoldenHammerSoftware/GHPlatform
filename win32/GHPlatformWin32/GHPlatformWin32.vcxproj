@@ -121,6 +121,7 @@
     <ClCompile Include="..\..\GHTimeUpdater.cpp" />
     <ClCompile Include="..\..\GHTimeVal.cpp" />
     <ClCompile Include="..\..\GHXorFile.cpp" />
+    <ClCompile Include="..\..\null\GHNullPlatformServices.cpp" />
     <ClCompile Include="..\..\null\GHNullThreadFactory.cpp" />
     <ClCompile Include="..\GHWin32FilePicker.cpp" />
     <ClCompile Include="..\GHWin32Mutex.cpp" />

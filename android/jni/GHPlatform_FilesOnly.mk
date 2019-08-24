@@ -39,6 +39,7 @@ LOCAL_SRC_FILES += ../../GHTimeVal.cpp
 LOCAL_SRC_FILES += ../../GHTimeUpdater.cpp
 LOCAL_SRC_FILES += ../../GHXorFile.cpp
 
+LOCAL_SRC_FILES += ../../null/GHNullPlatformServices.cpp
 LOCAL_SRC_FILES += ../../null/GHNullThreadFactory.cpp
 
 LOCAL_SRC_FILES += ../../android/GHAndroidFileOpener.cpp

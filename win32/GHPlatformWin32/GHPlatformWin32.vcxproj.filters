@@ -377,6 +377,9 @@
     <ClCompile Include="..\..\GHResourceFactory.cpp">
       <Filter>resource</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\null\GHNullPlatformServices.cpp">
+      <Filter>nullplatform</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\..\LICENSE.txt" />

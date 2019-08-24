@@ -7,10 +7,15 @@
 #include "GHNullThreadFactory.h"
 #include "GHNullTimeCalculator.h"
 #include "GHNullSocketMgr.h"
+#include "GHPlatform/GHPrintfOutputPipe.h"
 
+// A platform services for an unsupported platform.
+// Everything in here is a simple mock object as a placeholder.
 class GHNullPlatformServices : public GHPlatformServices
 {
 public:
+	GHNullPlatformServices(void);
+
 	virtual GHFileOpener& getFileOpener(void) override { return mFileOpener; }
 	virtual GHFilePicker& getFilePicker(void) override { return mFilePicker; }
 	virtual GHThreadFactory& getThreadFactory(void) override { return mThreadFactory; }
@@ -23,5 +28,6 @@ private:
 	GHNullThreadFactory mThreadFactory;
 	GHNullTimeCalculator mTimeCalculator;
 	GHNullSocketMgr mSocketMgr;
+	GHPrintfOutputPipe mOutputPipe;
 };
 
