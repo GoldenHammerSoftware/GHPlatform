@@ -7,10 +7,13 @@
 #include "GHCocoaThreadFactory.h"
 #include "GHPlatform/null/GHNullFilePicker.h"
 #include "GHPlatform/null/GHNullSocketMgr.h"
+#include "GHCocoaOutputPipe.h"
 
 class GHCocoaPlatformServices : public GHPlatformServices
 {
 public:
+    GHCocoaPlatformServices(void);
+    
     virtual GHFileOpener& getFileOpener(void) { return mFileOpener; }
     virtual GHFilePicker& getFilePicker(void) { return mFilePicker; }
     virtual GHThreadFactory& getThreadFactory(void) { return mThreadFactory; }
@@ -23,4 +26,5 @@ private:
     GHCocoaThreadFactory mThreadFactory;
     GHNullFilePicker mFilePicker;
     GHNullSocketMgr mSocketMgr;
+    GHCocoaOutputPipe mOutputPipe;
 };
