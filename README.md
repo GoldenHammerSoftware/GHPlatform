@@ -4,6 +4,7 @@ GHPlatform provides a way to use common OS features for iOS, win32, uwp, android
 
 ## Dependencies
 https://github.com/GoldenHammerSoftware/GHString - Install adjacent to where you install GHPlatform.  
+  
 If any additional dependencies are found mail dev@goldenhammersoftware.com and we'll either remove the dependency or bring that code into GHPlatform.
 
 ## How to use
