@@ -8,12 +8,12 @@ If any additional dependencies are found mail dev@goldenhammersoftware.com and w
 
 ## How to use
 
-1) Add the cpp and header files in GHPlatform to your project.
-2) Add the folder where GHPlatform lives to your #includes directories.  Ie is you are in src/GHPlatform/ then add src/ to your includes search path.
-3) Add the appropriate GHPlatform/[platform] files to your project.  Ie for an iOS project add the files in GHPlatform/ios.
-4) In platform code instantiate the appropriate GHPlatformServices.  Ie for win32 instantiate a GHPlatformServicesWin32 inside your winmain.
-5) Have your code ask the GHPlatformServices interface for the platform independent factories.
-6) Use any platform independent classes directly.
+*  Add the cpp and header files in GHPlatform to your project.
+*  Add the folder where GHPlatform lives to your #includes directories.  Ie is you are in src/GHPlatform/ then add src/ to your includes search path.
+*  Add the appropriate GHPlatform/[platform] files to your project.  Ie for an iOS project add the files in GHPlatform/ios.
+*  In platform code instantiate the appropriate GHPlatformServices.  Ie for win32 instantiate a GHPlatformServicesWin32 inside your winmain.
+*  Have your code ask the GHPlatformServices interface for the platform independent factories.
+*  Use any platform independent classes directly.
 
 ## GHPlatformServices
 
