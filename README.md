@@ -67,6 +67,37 @@ Bytestream is a way to efficiently iterate a stream of data.  We've used this in
 *  GHTimeCalculator - Platform interface to get the current time.
 *  GHTimeUpdater - Controller for incrementing a GHTimeVal to represent the new most current point in time.
 
+```
+#include "GHPlatform/GHTimeVal.h"
+#include "GHPlatform/GHTimeCalculator.h"
+#include "GHPlatform/GHTimeUpdater.h"
+#include "GHPlatform/GHPlatformServices.h"
+
+class ExampleTimeClass
+{
+public:
+	ExampleTimeClass(GHPlatformServices& platformServices)
+	: mTimeUpdater(platformServices.getTimeCalculator(), mTimeVal)
+	{
+		// Tell the time updater that it is active (not paused).
+		// This is not necessary if using a GHControllerMgr.
+		mTimeUpdater.activate();
+	}
+
+	void tick(void)
+	{
+		// Tell the time updater to process a new frame.  This updates mTimeVal.
+		mTimeUpdater.update();
+
+		GHDebugMessage::outputString("Current time info %f (%f since last frame)", mTimeVal.getTime(), mTimeVal.getTimePassed());
+	}
+
+private:
+	GHTimeVal mTimeVal;
+	GHTimeUpdater mTimeUpdater;
+};
+```
+
 ## C++ utilities
 
 *  GHDeletionHandle - A class with a virtual destructor for storage in an ownership list for later deletion.
