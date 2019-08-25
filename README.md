@@ -69,12 +69,15 @@ void openSomeFile(const GHFileOpener& fileOpener)
 	}
 	// Grab the file into memory.
 	file->readIntoBuffer();
+	// Get access to that file buffer memory.
 	char* buffer;
 	size_t bufferSize;
 	file->getFileBuffer(buffer, bufferSize);
 
 	// Do something with the file buffer here.
 
+	// file currently owns the file buffer so deleting it will clean up.
+	// If we had called file->releaseFileBuffer() we would have to manage the memory separately.
 	delete file;
 }
 ```
