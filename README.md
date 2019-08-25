@@ -114,6 +114,34 @@ A lightweight way to get performance information about your code.  The macros ar
 *  Output the results to debug print by using GHPROFILEOUTPUT.
 *  Reset the profile with GHPROFILECLEAR.
 
+```
+#include "GHPlatform/GHProfiler.h"
+
+void dumbFunction(void)
+{
+	// Clear out the data from any previous profiling.
+	GHPROFILECLEAR
+	// Start a new profile.
+	GHPROFILESTART
+
+	{
+		// Profile the time spent inside this scope.
+		GHPROFILESCOPE("dumbFunction - Block 1", GHString::CHT_REFERENCE)
+	}
+	// Start profiling code outside of a scope.
+	GHPROFILEBEGIN("dumbFunction - Block 2")
+
+	// Finish profiling code outside of a scope.
+	// The text must match the text used in GHPROFILEBEGIN.
+	GHPROFILEEND("dumbFunction - Block 2") 
+
+	// Finish profiling.
+	GHPROFILESTOP
+	// Dump the results to GHDebugMessage::outputString.
+	GHPROFILEOUTPUT
+}
+```
+
 ## Resource
 
 Wrapper for things loaded from disk.  These are ref counted and allow sharing.
