@@ -25,7 +25,8 @@ On win32:
 
 main()
 {
-	// There should be exactly one instance of GHPlatformServices that should live for the lifetime of your program.
+	// There should be exactly one instance of GHPlatformServices.
+	// It should live for the lifetime of your program.
 	// On android use GHAndroidPlatformServices instead etc.
 	GHWin32PlatformServices platformServices;
 
@@ -35,7 +36,16 @@ main()
 
 ## Debug output
 
-Printf does not always do what you would expect on every platform.  Instead include "GHPlatform/GHDebugMessage.h" and use GHDebugMessage::outputString("message");
+Printf does not always do what you would expect on every platform.  Some platforms have their own debug output function.
+
+```
+#include "GHPlatform/GHDebugMessage.h"
+
+void outputSimpleDebugMessage(void)
+{
+	GHDebugMessage::outputString("something");
+}
+```
 
 ## File access
 
@@ -72,6 +82,7 @@ Bytestream is a way to efficiently iterate a stream of data.  We've used this in
 #include "GHPlatform/GHTimeCalculator.h"
 #include "GHPlatform/GHTimeUpdater.h"
 #include "GHPlatform/GHPlatformServices.h"
+#include "GHPlatform/GHDebugMessage.h"
 
 class ExampleTimeClass
 {
