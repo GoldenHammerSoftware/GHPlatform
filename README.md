@@ -54,6 +54,31 @@ void outputSimpleDebugMessage(void)
 *  GHFileC / GHFOpenFileOpener - fopen implementation of file access.
 *  GHXorFile - A simple xor encrypted file wrapper for mild security.
 
+```
+#include "GHPlatform/GHFileOpener.h"
+#include "GHPlatform/GHFile.h"
+#include "GHPlatform/GHDebugMessage.h"
+
+void openSomeFile(const GHFileOpener& fileOpener)
+{
+	GHFile* file = fileOpener.openPlatformFile("blah.txt", GHFile::FT_TEXT, GHFile::FM_READONLY);
+	if (!file)
+	{
+		GHDebugMessage::outputString("Failed to open blah.txt");
+		return;
+	}
+	// Grab the file into memory.
+	file->readIntoBuffer();
+	char* buffer;
+	size_t bufferSize;
+	file->getFileBuffer(buffer, bufferSize);
+
+	// Do something with the file buffer here.
+
+	delete file;
+}
+```
+
 ## Bytestream
 
 Bytestream is a way to efficiently iterate a stream of data.  We've used this in beat line to process streaming song data.  It can be used as an interface for dealing with data that could come from either a file on disk or a streaming internet feed.
@@ -70,6 +95,7 @@ Bytestream is a way to efficiently iterate a stream of data.  We've used this in
 #include "GHPlatform/GHThreadFactory.h"
 #include "GHPlatform/GHThread.h"
 #include "GHPlatform/GHRunnable.h"
+#include "GHPlatform/GHDebugMessage.h"
 
 class SpamRunnable : public GHRunnable
 {
