@@ -17,9 +17,21 @@ If any additional dependencies are found mail dev@goldenhammersoftware.com and w
 
 ## GHPlatformServices
 
-A central handle for the platform-specific implementation of interfaces that require platform code.  GHWin32PlatformServices will give you platform-independent interfaces that are implemented with specific win32 code.  Having a central object for each platform gives us a place to do stuff like initialize the correct GHOutputPipe implementation for GHDebugMessage.  
+A central handle for the platform-specific implementation of interfaces that require platform code.  
   
-There should be exactly one instance of GHPlatformServices in existence.  
+On win32:  
+```
+#include "GHPlatform/win32/GHWin32PlatformServices.h"
+
+main()
+{
+	// There should be exactly one instance of GHPlatformServices that should live for the lifetime of your program.
+	// On android use GHAndroidPlatformServices instead etc.
+	GHWin32PlatformServices platformServices;
+
+	GHFile* file = platformServices.getFileOpener().openFile("blah.xml");
+}
+```
 
 ## Debug output
 
