@@ -66,6 +66,34 @@ Bytestream is a way to efficiently iterate a stream of data.  We've used this in
 *  GHThreadSleeper - A way to make a thread pause.
 *  GHThreadSignal - A way to use signals to pause worker threads until an event happens.
 
+```
+#include "GHPlatform/GHThreadFactory.h"
+#include "GHPlatform/GHThread.h"
+#include "GHPlatform/GHRunnable.h"
+
+class SpamRunnable : public GHRunnable
+{
+public:
+	virtual void run(void)
+	{
+		while (true)
+		{
+			GHDebugMessage::outputString("Spam!");
+			// infinite looping.
+		}
+}
+
+void causeSpam(GHThreadFactory& threadFactory)
+{
+	// This will spam to the debug console constantly forever.
+	// Production code should clean up these pointers when done.
+
+	GHRunnable* runnableToLeak = new SpamRunnable();
+	GHThread* threadToLeak = threadFactory.createThread();
+	threadToLeak->runThread(runnableToLeak);
+}
+```
+
 ## Sockets
 
 *  GHSocket - Interface for sending/receiving on a platform socket.
@@ -159,7 +187,7 @@ A lightweight way to get performance information about your code.  The macros ar
 ```
 #include "GHPlatform/GHProfiler.h"
 
-void dumbFunction(void)
+void contrivedProfilingFunction(void)
 {
 	// Clear out the data from any previous profiling.
 	GHPROFILECLEAR
