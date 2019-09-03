@@ -12,7 +12,6 @@ class GHSocketMgr;
 class GHWindow;
 
 // The interface for creating platform-specific factories.
-// Todo: a lot of this can probably be const.
 class GHPlatformServices
 {
 public:
@@ -21,8 +20,8 @@ public:
 
 	virtual GHFileOpener& getFileOpener(void) = 0;
 	virtual GHFilePicker& getFilePicker(void) = 0;
-	virtual GHThreadFactory& getThreadFactory(void) = 0;
-	virtual GHTimeCalculator& getTimeCalculator(void) = 0;
+	virtual const GHThreadFactory& getThreadFactory(void) = 0;
+	virtual const GHTimeCalculator& getTimeCalculator(void) = 0;
 	virtual GHSocketMgr& getSocketMgr(void) = 0;
 
 	GHStringIdFactory& getIdFactory(void) { return mIdFactory; }
