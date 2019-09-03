@@ -1,7 +1,7 @@
 // Copyright 2010 Golden Hammer Software
 #pragma once
 
-#include "GHOutputPipe.h"
+#include "GHPlatform/GHOutputPipe.h"
 
 class GHiOSOutputPipe : public GHOutputPipe
 {

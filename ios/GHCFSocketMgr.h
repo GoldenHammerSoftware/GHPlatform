@@ -1,7 +1,7 @@
 // Copyright 2010 Golden Hammer Software
 #pragma once
 
-#include "GHSocketMgr.h"
+#include "GHPlatform/GHSocketMgr.h"
 
 // CFNetwork implementation of GHSocketMgr
 class GHCFSocketMgr : public GHSocketMgr

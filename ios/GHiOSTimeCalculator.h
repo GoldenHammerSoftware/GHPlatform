@@ -1,7 +1,7 @@
 // Copyright 2010 Golden Hammer Software
 #pragma once
 
-#include "GHTimeCalculator.h"
+#include "GHPlatform/GHTimeCalculator.h"
 
 class GHiOSTimeCalculator : public GHTimeCalculator
 {

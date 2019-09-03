@@ -1,7 +1,7 @@
 // Copyright 2010 Golden Hammer Software
 #pragma once
 
-#include "GHThreadFactory.h"
+#include "GHPlatform/GHThreadFactory.h"
 
 class GHiOSThreadFactory : public GHThreadFactory
 {

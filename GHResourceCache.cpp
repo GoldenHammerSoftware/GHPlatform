@@ -1,7 +1,7 @@
 // Copyright 2010 Golden Hammer Software
-#include "GHPlatform/GHResourceCache.h"
+#include "GHResourceCache.h"
 #include "stdarg.h"
-#include "GHPlatform/GHResource.h"
+#include "GHResource.h"
 #include "assert.h"
 #include "GHDebugMessage.h"
 

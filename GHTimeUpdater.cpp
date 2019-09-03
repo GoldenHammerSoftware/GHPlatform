@@ -1,7 +1,7 @@
 // Copyright 2010 Golden Hammer Software
 #include "GHTimeUpdater.h"
-#include "GHPlatform/GHTimeCalculator.h"
-#include "GHPlatform/GHTimeVal.h"
+#include "GHTimeCalculator.h"
+#include "GHTimeVal.h"
 
 GHTimeUpdater::GHTimeUpdater(const GHTimeCalculator& timeCalc, GHTimeVal& timeVal)
 : mTimeCalc(timeCalc)

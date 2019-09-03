@@ -1,7 +1,7 @@
 // Copyright 2010 Golden Hammer Software
 #pragma once
 
-#include "GHFileOpener.h"
+#include "GHPlatform/GHFileOpener.h"
 
 class GHiOSFileOpener : public GHFileOpener
 {
