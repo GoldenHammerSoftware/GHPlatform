@@ -32,7 +32,7 @@ bool GHCFSocket::read(char* buffer, size_t bufferLen, size_t& sizeRead)
     char* readDest = buffer;
     while (sizeRead < bufferLen && CFReadStreamHasBytesAvailable(mReadStream))
     {
-        int lastSizeRead = CFReadStreamRead(mReadStream, (UInt8*)readDest, bufferLen);
+        size_t lastSizeRead = CFReadStreamRead(mReadStream, (UInt8*)readDest, bufferLen);
         if (lastSizeRead < 0)
         {
             // socket closed.

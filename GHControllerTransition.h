@@ -1,7 +1,7 @@
 // Copyright 2010 Golden Hammer Software
 #pragma once
 
-#include "GHPlatform/GHTransition.h"
+#include "GHTransition.h"
 #include <vector>
 
 class GHController;
