@@ -4,6 +4,8 @@
 #include "GHPlatform/GHFileOpener.h"
 #include <jni.h>
 #include "GHString/GHString.h"
+#include <string>
+#include <vector>
 
 class GHJNIMgr;
 
@@ -11,21 +13,21 @@ class GHJNIMgr;
 class GHAndroidFileOpener : public GHFileOpener
 {
 public:
-    GHAndroidFileOpener(GHJNIMgr& jniMgr, jobject jobj, const char* sdCardPrefix, jobject jAssetMgr);
+    GHAndroidFileOpener(GHJNIMgr& jniMgr, jobject jobj, std::vector<GHString>&& saveFileDirectories, jobject jAssetMgr);
 
 protected:
 	virtual GHFile* openPlatformFile(const char* filename, GHFile::FileType fileType, GHFile::FileMode fileMode) const;
 
     
-    GHFile* openFileFromSDCard(const char* filename, const char* flags, GHFile::FileType fileType, GHFile::FileMode fileMode) const;
+    GHFile* openFileFromSaveFileDirectory(const char* filename, const char* flags, GHFile::FileType fileType, GHFile::FileMode fileMode) const;
 	GHFile* openFileFromAPK(const char* filename, GHFile::FileType fileType, GHFile::FileMode fileMode) const;
 
     
 private:
+	std::vector<GHString> mSaveFileDirectories;
+
 	GHJNIMgr& mJNIMgr;
 	jobject mJAssetMgr;
 	jobject mJObject;
 	jmethodID mMethodID;
-	GHString mSDCardPrefix;
-
 };
