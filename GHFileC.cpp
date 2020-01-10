@@ -1,5 +1,6 @@
 // Copyright 2010 Golden Hammer Software
 #include "GHFileC.h"
+#include <assert.h>
 
 GHFileC::GHFileC(FILE* file, FileType type, FileMode mode, long maxLength)
 :	mFile(file)
@@ -52,9 +53,9 @@ bool GHFileC::readIntoBuffer(void)
 	// allocate memory to contain the whole file.
 	mFileBuffer = new char[mBufferSize+1];
 	// copy the file into the buffer.
-	::fread(mFileBuffer, 1, mBufferSize, mFile);
+	mBufferSize = ::fread(mFileBuffer, 1, mBufferSize, mFile);
 	mFileBuffer[mBufferSize] = '\0';
-	
+
 	return true;
 }
 
