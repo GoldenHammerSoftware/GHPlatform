@@ -58,14 +58,13 @@ Java_goldenhammer_ghbase_GHEngineInterface_loadFile(JNIEnv* env, jobject thiz, j
 	fileInfo->mLength = length;
 }
 
-GHAndroidFileOpener::GHAndroidFileOpener(GHJNIMgr& jniMgr, jobject jobj, const char* sdCardPrefix, jobject jAssetMgr)
+GHAndroidFileOpener::GHAndroidFileOpener(GHJNIMgr& jniMgr, jobject jobj, std::vector<GHString>&& saveFileDirectories, jobject jAssetMgr)
 	: mJNIMgr(jniMgr)
+	, mSaveFileDirectories(std::move(saveFileDirectories))
 	, mJObject(jobj)
 	, mMethodID(0)
 	, mJAssetMgr(jAssetMgr)
 {
-    mSDCardPrefix.setConstChars(sdCardPrefix, GHString::CHT_COPY);
-    
 	// Deprecated: now using ndk assetmgr
 	jclass cls = mJNIMgr.getJNIEnv().GetObjectClass(mJObject);
 	if(cls == 0) {
@@ -103,7 +102,7 @@ GHFile* GHAndroidFileOpener::openPlatformFile(const char* filename, GHFile::File
         }
     }
     
-    GHFile* ret = openFileFromSDCard(filename, flags, fileType, fileMode);
+    GHFile* ret = openFileFromSaveFileDirectory(filename, flags, fileType, fileMode);
     if (!ret && fileMode == GHFile::FM_READONLY)
     {
         ret = openFileFromAPK(filename, fileType, fileMode);
@@ -117,18 +116,24 @@ GHFile* GHAndroidFileOpener::openPlatformFile(const char* filename, GHFile::File
     return ret;
 }
 
-GHFile* GHAndroidFileOpener::openFileFromSDCard(const char* filename, const char* flags, GHFile::FileType fileType, GHFile::FileMode fileMode) const
+GHFile* GHAndroidFileOpener::openFileFromSaveFileDirectory(const char* filename, const char* flags, GHFile::FileType fileType, GHFile::FileMode fileMode) const
 {
-    const size_t BUF_LEN = 512;
-	char buf[BUF_LEN];
-	assert(mSDCardPrefix.getCharLen() + strlen(filename) < BUF_LEN);
-	sprintf(buf, "%s%s", mSDCardPrefix.getChars(), filename);
-	FILE* file = fopen(buf, flags);
-	if(!file) {
-		return 0;
+	size_t numSaveFileDirectories = mSaveFileDirectories.size();
+	for (size_t i = 0; i < numSaveFileDirectories; ++i)
+	{
+		const GHString& saveFileDirectory = mSaveFileDirectories[i];
+
+		const size_t BUF_LEN = 512;
+		char buf[BUF_LEN];
+		assert(saveFileDirectory.getCharLen() + strlen(filename) < BUF_LEN);
+		sprintf(buf, "%s%s", saveFileDirectory.getChars(), filename);
+		FILE* file = fopen(buf, flags);
+		if (file) 
+		{
+			return new GHFileC(file, fileType, fileMode);
+		}
 	}
-    
-	return new GHFileC(file, fileType, fileMode);
+	return 0;    
 }
 
 GHFile* GHAndroidFileOpener::openFileFromAPK(const char* filename, GHFile::FileType fileType, GHFile::FileMode fileMode) const

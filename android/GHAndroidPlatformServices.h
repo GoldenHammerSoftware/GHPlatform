@@ -8,13 +8,15 @@
 #include "GHAndroidTimeCalculator.h"
 #include "GHAndroidSocketMgr.h"
 #include "GHAndroidOutputPipe.h"
+#include <vector>
+#include "GHString/GHString.h"
 
 #include <jni.h>
 
 class GHAndroidPlatformServices : public GHPlatformServices
 {
 public:
-	GHAndroidPlatformServices(GHJNIMgr& jniMgr, jobject engineInterface, const char* sdCardPrefix, jobject jAssetMgr);
+	GHAndroidPlatformServices(GHJNIMgr& jniMgr, jobject engineInterface, std::vector<GHString>&& saveFileDirectories, jobject jAssetMgr);
 
 	virtual GHFileOpener& getFileOpener(void) { return mFileOpener; }
 	virtual GHFilePicker& getFilePicker(void) { return mFilePicker; }
