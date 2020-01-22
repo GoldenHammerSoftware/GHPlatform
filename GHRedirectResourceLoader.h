@@ -23,5 +23,5 @@ private:
 	static const size_t MAX_EXT_LEN = 16;
 	static const size_t MAX_FILENAME_LEN = 1024;
 	char mExt[MAX_EXT_LEN];
-	char mScratchBuffer[MAX_FILENAME_LEN];
+	char mScratchBuffer[MAX_FILENAME_LEN + MAX_EXT_LEN + 1];
 };
