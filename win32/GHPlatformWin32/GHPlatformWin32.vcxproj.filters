@@ -269,6 +269,9 @@
     <ClInclude Include="..\..\GHResourceLoader.h">
       <Filter>resource</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\GHRedirectResourceLoader.h">
+      <Filter>resource</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\GHPlatformServices.cpp" />
@@ -379,6 +382,9 @@
     </ClCompile>
     <ClCompile Include="..\..\null\GHNullPlatformServices.cpp">
       <Filter>nullplatform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GHRedirectResourceLoader.cpp">
+      <Filter>resource</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

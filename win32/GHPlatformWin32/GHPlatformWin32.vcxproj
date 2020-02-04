@@ -48,6 +48,7 @@
     <ClInclude Include="..\..\GHProfileRecord.h" />
     <ClInclude Include="..\..\GHProperty.h" />
     <ClInclude Include="..\..\GHPropertyContainer.h" />
+    <ClInclude Include="..\..\GHRedirectResourceLoader.h" />
     <ClInclude Include="..\..\GHRefCounted.h" />
     <ClInclude Include="..\..\GHRefCountedDeletionHandle.h" />
     <ClInclude Include="..\..\GHResource.h" />
@@ -113,6 +114,7 @@
     <ClCompile Include="..\..\GHProfileRecord.cpp" />
     <ClCompile Include="..\..\GHProperty.cpp" />
     <ClCompile Include="..\..\GHPropertyContainer.cpp" />
+    <ClCompile Include="..\..\GHRedirectResourceLoader.cpp" />
     <ClCompile Include="..\..\GHRefCounted.cpp" />
     <ClCompile Include="..\..\GHResource.cpp" />
     <ClCompile Include="..\..\GHResourceCache.cpp" />
