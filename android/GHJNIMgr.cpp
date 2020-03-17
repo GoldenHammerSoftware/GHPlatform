@@ -2,8 +2,9 @@
 #include "GHJNIMgr.h"
 #include "GHPlatform/GHDebugMessage.h"
 
-GHJNIMgr::GHJNIMgr(JNIEnv& mainThreadEnv, JavaVM* jvm)
+GHJNIMgr::GHJNIMgr(JNIEnv& mainThreadEnv, JavaVM* jvm, jobject activity)
 : mMainThreadEnv(mainThreadEnv)
+, mActivity(activity)
 {
 	mJVM = jvm;
 }
@@ -25,4 +26,9 @@ JNIEnv& GHJNIMgr::getJNIEnv(void)
 JavaVM* GHJNIMgr::getJVM(void)
 {
 	return mJVM;
+}
+
+jobject GHJNIMgr::getActivity(void)
+{
+	return mActivity;
 }
