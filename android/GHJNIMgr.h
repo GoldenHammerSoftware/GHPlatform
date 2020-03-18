@@ -7,12 +7,14 @@
 class GHJNIMgr
 {
 public:
-	GHJNIMgr(JNIEnv& mainThreadEnv, JavaVM* jvm);
+	GHJNIMgr(JNIEnv& mainThreadEnv, JavaVM* jvm, jobject activity);
 
 	JNIEnv& getJNIEnv(void);
 	JavaVM* getJVM(void);
+	jobject getActivity(void);
 
 private:
 	JNIEnv& mMainThreadEnv;
 	JavaVM* mJVM;
+	jobject mActivity;
 };
