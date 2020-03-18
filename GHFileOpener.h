@@ -10,9 +10,14 @@
 class GHFileOpener
 {
 public:
+    const static int MAX_PATH_LEN = 1024;
+
+public:
     virtual ~GHFileOpener(void) {}
     
-    GHFile* openFile(const char* filename, GHFile::FileType fileType, GHFile::FileMode fileMode) const;
+    // If outFoundPath is non-null we assume it is an array of MAX_PATH_LEN and will fill in the location of the found file.
+    GHFile* openFile(const char* filename, GHFile::FileType fileType, GHFile::FileMode fileMode, char* outFoundPath=0) const;
+
     void addResourcePath(const char* path);
     const std::vector<GHString>& getResourcePaths(void) const { return mResourcePaths; }
     
