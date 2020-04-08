@@ -85,6 +85,24 @@ void GHStateMachine::removeTransition(GHTransition* trans)
 	}
 }
 
+void GHStateMachine::removeTransition(StateId state, GHTransition* trans)
+{
+    std::map<StateId, TransitionList>::iterator findIter;
+    findIter = mStates.find(state);
+    if (findIter != mStates.end())
+    {
+        TransitionList::iterator listIter;
+        for (listIter = findIter->second.begin(); listIter != findIter->second.end(); ++listIter)
+        {
+            if (*listIter == trans)
+            {
+                findIter->second.erase(listIter);
+                return;
+            }
+        }
+    }
+}
+
 void GHStateMachine::setState(StateId state)
 {
     if (mIsTransitioning) {

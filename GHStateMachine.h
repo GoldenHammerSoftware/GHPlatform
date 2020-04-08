@@ -23,7 +23,10 @@ public:
 	// take ownership of a transition and assign it to a state.
 	// it is safe to add a transition to more than one state.
 	void addTransition(StateId state, GHTransition* trans);
+	// remove a transition from all states.
 	void removeTransition(GHTransition* trans);
+	// remove a transition from one state if found.
+	void removeTransition(StateId state, GHTransition* trans);
 	
 	// transition to a new state.  call deactivate on previous transitions,
 	//  and activate on the new transitions.
