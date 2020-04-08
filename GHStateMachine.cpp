@@ -4,6 +4,7 @@
 #include "GHTransition.h"
 #include <algorithm>
 #include <assert.h>
+#include "GHDebugMessage.h"
 
 GHStateMachine::StateId GHStateMachine::kInactive = -1;
 
@@ -87,6 +88,10 @@ void GHStateMachine::removeTransition(GHTransition* trans)
 
 void GHStateMachine::removeTransition(StateId state, GHTransition* trans)
 {
+    if (state == mState) {
+        trans->deactivate();
+    }
+
     std::map<StateId, TransitionList>::iterator findIter;
     findIter = mStates.find(state);
     if (findIter != mStates.end())
@@ -101,6 +106,7 @@ void GHStateMachine::removeTransition(StateId state, GHTransition* trans)
             }
         }
     }
+    GHDebugMessage::outputString("Failed to find transition to remove");
 }
 
 void GHStateMachine::setState(StateId state)
