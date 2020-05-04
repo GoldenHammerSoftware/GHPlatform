@@ -23,8 +23,8 @@ GHAndroidSocket::GHAndroidSocket(const char* addr, const char* port, GHConnectio
 , mSocketId(-1)
 {
 	int portno = ::atoi(port);
-	int socketId = socket(AF_INET, SOCK_STREAM, 0);
-	if (socketId < 0)
+	mSocketId = socket(AF_INET, SOCK_STREAM, 0);
+	if (mSocketId < 0)
 	{
 		GHDebugMessage::outputString("Failed to create empty socket");
 		return;
