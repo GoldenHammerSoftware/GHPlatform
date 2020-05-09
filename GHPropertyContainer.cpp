@@ -1,9 +1,11 @@
 // Copyright 2010 Golden Hammer Software
 #include "GHPropertyContainer.h"
 
-void GHPropertyContainer::setProperty(GHIdentifier type, const GHProperty& val)
+GHProperty& GHPropertyContainer::setProperty(GHIdentifier type, const GHProperty& val)
 {
-    mProperties[type] = val;
+	GHProperty& ret = mProperties[type];
+	ret = val;
+	return ret;
 }
 
 const GHProperty& GHPropertyContainer::getProperty(const GHIdentifier& type) const

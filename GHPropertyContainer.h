@@ -8,7 +8,7 @@
 class GHPropertyContainer
 {
 public:
-	void setProperty(GHIdentifier type, const GHProperty& val);
+	GHProperty& setProperty(GHIdentifier type, const GHProperty& val);
 	const GHProperty& getProperty(const GHIdentifier& type) const;
 	void setParentProperties(const GHPropertyContainer* parent) { mParentProperties = parent; }
 
