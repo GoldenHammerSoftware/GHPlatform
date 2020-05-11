@@ -22,17 +22,6 @@ GHFile* GHFileOpener::openFile(const char* filename, GHFile::FileType fileType,
     GHFile* ret = 0;
     char nameBuff[MAX_PATH_LEN];
 
-	// look in ./ first before looking at resource paths.
-	// we were having an issue of our config files being saved in random read-only directories.
-	ret = openPlatformFile(filename, fileType, fileMode);
-	if (ret) {
-#ifdef GENERATE_DATA_COPY
-		outputDataCopy(filename, "");
-#endif
-		if (outFoundPath) ::snprintf(outFoundPath, MAX_PATH_LEN, "%s", filename);
-		return ret;
-	}
-
     std::vector<GHString>::const_reverse_iterator pathIter;
     for (pathIter = mResourcePaths.rbegin(); pathIter != mResourcePaths.rend(); ++pathIter)
     {
@@ -47,6 +36,18 @@ GHFile* GHFileOpener::openFile(const char* filename, GHFile::FileType fileType,
         }
     }
     
+    // failed to find it in our extended paths, so look in root path.
+    // we were having an issue of our config files being saved in random read-only directories,
+    //  and to combat that we were looking in root first, but that prevents loading the Tablet- versions.
+    ret = openPlatformFile(filename, fileType, fileMode);
+    if (ret) {
+#ifdef GENERATE_DATA_COPY
+        outputDataCopy(filename, "");
+#endif
+        if (outFoundPath) ::snprintf(outFoundPath, MAX_PATH_LEN, "%s", filename);
+        return ret;
+    }
+
     return ret;
 }
 
