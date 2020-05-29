@@ -27,3 +27,9 @@ void GHDebugMessage::outputString(const char* str, ...)
 		sOutput->outputString(buffer);
 	}
 }
+
+void GHDebugMessage::outputPreformattedString(const char* str)
+{
+	if (!sOutput || !str) return;
+	sOutput->outputString(str);
+}
