@@ -110,7 +110,7 @@ GHFile* GHAndroidFileOpener::openPlatformFile(const char* filename, GHFile::File
     
     if (!ret)
     {
-        GHDebugMessage::outputString("Failed to open file %s for %s", filename, fileMode == GHFile::FM_READONLY ? "read" : "write");
+        //GHDebugMessage::outputString("Failed to open file %s for %s", filename, fileMode == GHFile::FM_READONLY ? "read" : "write");
     }
     
     return ret;
@@ -150,7 +150,7 @@ GHFile* GHAndroidFileOpener::openFileFromAPK(const char* filename, GHFile::FileT
         loadedAsset = AAssetManager_open(mgr, renameBuff, AASSET_MODE_UNKNOWN);
         if (!loadedAsset)
         {
-            GHDebugMessage::outputString("Failed to AAssetManager_open %s", filename);
+            //GHDebugMessage::outputString("Failed to AAssetManager_open %s", filename);
             return 0;
         }
 	}
