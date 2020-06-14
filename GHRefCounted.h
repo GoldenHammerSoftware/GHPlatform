@@ -12,7 +12,7 @@ public:
     // del mRefCount.  when it hits 0, delete this object
     void release(void);
 
-    short getRefCount(void) const { return mRefCount; }
+    unsigned short getRefCount(void) const { return mRefCount; }
 
     static void changePointer(GHRefCounted*& destPtr, GHRefCounted* newPtr);
     
@@ -23,7 +23,7 @@ protected:
 
 private:
     // a count of how many people have called acquire without calling release.
-    short mRefCount;
+    unsigned short mRefCount;
 };
 
 template< typename T >
