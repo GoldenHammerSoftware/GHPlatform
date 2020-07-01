@@ -13,6 +13,8 @@ public:
 	JavaVM* getJVM(void);
 	jobject getActivity(void);
 
+	void dumpReferenceTables(void);
+
 private:
 	JNIEnv& mMainThreadEnv;
 	JavaVM* mJVM;
