@@ -35,7 +35,7 @@ jobject GHJNIMgr::getActivity(void)
 
 void GHJNIMgr::dumpReferenceTables(void)
 {
-	jclass vm_class = mJNIMgr.getJNIEnv().FindClass("dalvik/system/VMDebug");
-	jmethodID dump_mid = mJNIMgr.getJNIEnv().GetStaticMethodID(vm_class, "dumpReferenceTables", "()V");
-	mJNIMgr.getJNIEnv().CallStaticVoidMethod(vm_class, dump_mid);
+	jclass vm_class = getJNIEnv().FindClass("dalvik/system/VMDebug");
+	jmethodID dump_mid = getJNIEnv().GetStaticMethodID(vm_class, "dumpReferenceTables", "()V");
+	getJNIEnv().CallStaticVoidMethod(vm_class, dump_mid);
 }
