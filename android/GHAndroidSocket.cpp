@@ -81,6 +81,26 @@ bool GHAndroidSocket::read(char* buffer, size_t bufferLen, size_t& sizeRead)
 	if (!mInitialized) return false;
 
 	bzero(buffer, bufferLen);
+	sizeRead = 0;
+
+	while (sizeRead < bufferLen-1)
+	{
+		int bytesReadThisCall = ::read(mSocketId, buffer + sizeRead, bufferLen - sizeRead);
+		if (bytesReadThisCall < 0)
+		{
+			GHDebugMessage::outputString("Error reading from socket.");
+			mInitialized = false;
+			return false;
+		}
+		if (bytesReadThisCall == 0)
+		{
+			// end of message.
+			break;
+		}
+		sizeRead += bytesReadThisCall;
+	}
+
+	/* we originally only read once here
 	sizeRead = ::read(mSocketId, buffer, bufferLen);
 	if (*reinterpret_cast<int*>(&sizeRead) < 0)
 	{
@@ -88,6 +108,7 @@ bool GHAndroidSocket::read(char* buffer, size_t bufferLen, size_t& sizeRead)
 		mInitialized = false;
 		return false;
 	}
+	*/
 	GHDebugMessage::outputString("Read %s from socket", buffer);
 	return true;
 }
