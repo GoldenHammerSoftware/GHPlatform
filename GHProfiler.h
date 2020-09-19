@@ -1,4 +1,4 @@
-// Copyright 2010 Golden Hammer Software
+// Copyright Golden Hammer Software
 #pragma once
 
 #include <map>

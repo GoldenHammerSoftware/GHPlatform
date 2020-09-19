@@ -1,4 +1,4 @@
-// Copyright 2010 Golden Hammer Software
+// Copyright Golden Hammer Software
 #include "GHResourceFactory.h"
 #include "GHString/GHStringIdFactory.h"
 #include "GHResourceCache.h"

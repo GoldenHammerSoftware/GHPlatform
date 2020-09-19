@@ -1,4 +1,4 @@
-// Copyright 2010 Golden Hammer Software
+// Copyright Golden Hammer Software
 #include "GHPropertyContainer.h"
 
 GHProperty& GHPropertyContainer::setProperty(GHIdentifier type, const GHProperty& val)

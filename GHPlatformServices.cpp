@@ -1,4 +1,4 @@
-// Copyright 2019 Golden Hammer Software
+// Copyright Golden Hammer Software
 #include "GHPlatformServices.h"
 #include "GHDebugMessage.h"
 

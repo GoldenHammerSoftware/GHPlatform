@@ -1,4 +1,4 @@
-// Copyright 2010 Golden Hammer Software
+// Copyright Golden Hammer Software
 #include "GHWin32FilePicker.h"
 #include "GHWin32Include.h"
 #include "GHString/GHString.h"

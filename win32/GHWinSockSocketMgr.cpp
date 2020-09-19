@@ -1,4 +1,4 @@
-// Copyright 2010 Golden Hammer Software
+// Copyright Golden Hammer Software
 #include "GHWinSockSocketMgr.h"
 #include "GHWinSockSocket.h"
 #include "GHPlatform/GHDebugMessage.h"

@@ -1,4 +1,4 @@
-// Copyright 2010 Golden Hammer Software
+// Copyright Golden Hammer Software
 #if defined(GHPUTSTRINGSINTABLES) || defined(GHPUTDECLARATIONS) || !defined(_GHPLATFORMIDENTIFIERS_H_)
 #ifndef _GHPLATFORMIDENTIFIERS_H_
 #define _GHPLATFORMIDENTIFIERS_H_

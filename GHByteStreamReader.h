@@ -1,4 +1,4 @@
-// Copyright 2010 Golden Hammer Software
+// Copyright Golden Hammer Software
 #pragma once
 
 #include <cstddef>
@@ -7,7 +7,7 @@ class GHByteStream;
 
 // something that reads from a GHByteStream and returns individual entries.
 // we ask for pieces of the main buffer in chunks
-// this class largely exists to provide non-virtual accessors to byte stream reader.
+// this class largely exists to provide non-virtual accessors to byte stream reading.
 class GHByteStreamReader
 {
 public:

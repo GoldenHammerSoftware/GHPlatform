@@ -1,4 +1,4 @@
-// Copyright 2010 Golden Hammer Software
+// Copyright Golden Hammer Software
 
 // Central place for including the windows stuff.
 // useful for setting up defines and such before including windows.

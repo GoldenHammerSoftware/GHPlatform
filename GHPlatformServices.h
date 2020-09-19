@@ -1,4 +1,4 @@
-// Copyright 2019 Golden Hammer Software
+// Copyright Golden Hammer Software
 #pragma once
 
 #include "GHString/GHStringIdFactoryDJB2.h"

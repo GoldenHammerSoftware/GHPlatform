@@ -1,4 +1,4 @@
-// Copyright 2010 Golden Hammer Software
+// Copyright Golden Hammer Software
 #include "GHByteStreamReader.h"
 #include "GHByteStream.h"
 #include <string.h>

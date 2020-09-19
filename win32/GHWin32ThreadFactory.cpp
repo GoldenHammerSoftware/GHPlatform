@@ -1,4 +1,4 @@
-// Copyright 2010 Golden Hammer Software
+// Copyright Golden Hammer Software
 #include "GHWin32ThreadFactory.h"
 #include "GHWin32Thread.h"
 #include "GHWin32Mutex.h"

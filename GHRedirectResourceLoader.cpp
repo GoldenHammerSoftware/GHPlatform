@@ -1,4 +1,4 @@
-// Copyright 2010 Golden Hammer Software
+// Copyright Golden Hammer Software
 #include "GHRedirectResourceLoader.h"
 #include "GHResourceFactory.h"
 #include <assert.h>

@@ -1,4 +1,4 @@
-// Copyright 2010 Golden Hammer Software
+// Copyright Golden Hammer Software
 #include "GHNullThreadFactory.h"
 #include "GHNullThread.h"
 #include "GHNullMutex.h"
