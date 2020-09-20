@@ -7,16 +7,8 @@
 #include "GHString/GHEnum.h"
 
 GHIDENTIFIERBEGIN(GHPlatformIdentifiers)
-GHIDENTIFIER(PROPS)
-GHIDENTIFIER(PROPID)
-GHIDENTIFIER(PROPVAL)
 
-GHIDENTIFIER(INTVAL) // an int prop val
-GHIDENTIFIER(VAL) // arbitrary val
-
-GHIDENTIFIER(FILENAME) // name of a file with no path
-GHIDENTIFIER(FILEPATH) // name and path of a file
-GHIDENTIFIER(FILETOKEN) // token used by some os's for accessing a file.
+// put any identifiers needed by GHPlatform here.
 
 GHIDENTIFIEREND
 

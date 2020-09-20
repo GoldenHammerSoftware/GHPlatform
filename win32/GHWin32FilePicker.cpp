@@ -2,8 +2,8 @@
 #include "GHWin32FilePicker.h"
 #include "GHWin32Include.h"
 #include "GHString/GHString.h"
-#include "GHPlatform/GHPropertyContainer.h"
-#include "GHPlatform/GHPlatformIdentifiers.h"
+#include "GHUtils/GHPropertyContainer.h"
+#include "GHUtils/GHUtilsIdentifiers.h"
 
 GHWin32FilePicker::GHWin32FilePicker(HWND hwnd)
 : mHwnd(hwnd)
@@ -16,7 +16,7 @@ void GHWin32FilePicker::pickFile(PickedCallback& callback, const std::vector<con
 	wchar_t* wExts = 0;
 	bool dlgOk = createWin32Picker(exts, pDlg, wExts);
 
-	GHPropertyContainer result;
+	PickedCallback::Result result(0);
 	if (!dlgOk) {
 		delete[] wExts;
 		callback.handleFilePicked(result);
@@ -56,7 +56,7 @@ void GHWin32FilePicker::pickMultipleFiles(PickedCallback& callback, const std::v
 
 	if (!dlgOk) {
 		delete[] wExts;
-		GHPropertyContainer result;
+		PickedCallback::Result result(0);
 		callback.handleFilePicked(result);
 		return;
 	}
@@ -93,7 +93,7 @@ void GHWin32FilePicker::pickMultipleFiles(PickedCallback& callback, const std::v
 
 	if (!sentAtLeastOne)
 	{
-		GHPropertyContainer result;
+		PickedCallback::Result result(0);
 		callback.handleFilePicked(result);
 	}
 }
@@ -134,7 +134,7 @@ bool GHWin32FilePicker::createWin32Picker(const std::vector<const char*>& exts, 
 
 void GHWin32FilePicker::sendPickResults(PickedCallback& callback, IShellItem* pItem)
 {
-	GHPropertyContainer result;
+	PickedCallback::Result result(0);
 
 	LPOLESTR pwsz = NULL;
 	HRESULT hr = pItem->GetDisplayName(SIGDN_FILESYSPATH, &pwsz);
@@ -144,8 +144,7 @@ void GHWin32FilePicker::sendPickResults(PickedCallback& callback, IShellItem* pI
 		char* charbuf = new char[lstrlen(pwsz) + 1];
 		memset(charbuf, 0, lstrlen(pwsz) + 1);
 		wcstombs(charbuf, pwsz, lstrlen(pwsz));
-		GHString* str = new GHString(charbuf, GHString::CHT_CLAIM);
-		result.setProperty(GHPlatformIdentifiers::FILEPATH, GHProperty(str->getChars(), new GHRefCountedType<GHString>(str)));
+		result.mFilePath.setChars(charbuf, GHString::CHT_CLAIM);
 		CoTaskMemFree(pwsz);
 	}
 	hr = pItem->GetDisplayName(SIGDN_PARENTRELATIVEPARSING, &pwsz);
@@ -154,8 +153,7 @@ void GHWin32FilePicker::sendPickResults(PickedCallback& callback, IShellItem* pI
 		char* charbuf = new char[lstrlen(pwsz) + 1];
 		memset(charbuf, 0, lstrlen(pwsz) + 1);
 		wcstombs(charbuf, pwsz, lstrlen(pwsz));
-		GHString* str = new GHString(charbuf, GHString::CHT_CLAIM);
-		result.setProperty(GHPlatformIdentifiers::FILENAME, GHProperty(str->getChars(), new GHRefCountedType<GHString>(str)));
+		result.mFileName.setChars(charbuf, GHString::CHT_CLAIM);
 		CoTaskMemFree(pwsz);
 	}
 	callback.handleFilePicked(result);

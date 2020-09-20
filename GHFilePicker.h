@@ -1,6 +1,8 @@
 // Copyright Golden Hammer Software
 #pragma once
 
+#include "GHPlatform/GHRefCounted.h"
+#include "GHString/GHString.h"
 #include <vector>
 
 class GHPropertyContainer;
@@ -13,8 +15,34 @@ public:
 	class PickedCallback
 	{
 	public:
+		class Result
+		{
+		public:
+			Result(GHRefCounted* platformResult)
+				: mPlatformResult(platformResult)
+			{
+				if (mPlatformResult) mPlatformResult->acquire();
+			}
+			Result(const Result& other)
+			{
+				*this = other;
+				if (mPlatformResult) mPlatformResult->acquire();
+			}
+			~Result(void)
+			{
+				if (mPlatformResult) mPlatformResult->release();
+			}
+
+		public:
+			GHString mFilePath;
+			GHString mFileName;
+			GHString mFileToken;
+			// Arbitrary platform data.
+			GHRefCounted* mPlatformResult{ 0 };
+		};
+
 		virtual ~PickedCallback(void) {}
-		virtual void handleFilePicked(GHPropertyContainer& result) = 0;
+		virtual void handleFilePicked(PickedCallback::Result& result) = 0;
 	};
 
 public:

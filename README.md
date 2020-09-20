@@ -215,7 +215,7 @@ A lightweight way to get performance information about your code.  The macros ar
 *  Reset the profile with GHPROFILECLEAR.
 
 ```
-#include "GHPlatform/GHProfiler.h"
+#include "GHUtils/GHProfiler.h"
 
 void contrivedProfilingFunction(void)
 {

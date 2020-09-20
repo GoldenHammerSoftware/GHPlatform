@@ -1,7 +1,6 @@
 // Copyright 2019 Golden Hammer Software
 #include "GHAndroidPlatformServices.h"
 #include "GHPlatform/GHDebugMessage.h"
-#include "GHPlatform/GHProfiler.h"
 #include "GHPlatform/GHThreadFactory.h"
 
 GHAndroidPlatformServices::GHAndroidPlatformServices(GHJNIMgr& jniMgr, jobject engineInterface, std::vector<GHString>&& saveFileDirectories, jobject jAssetMgr)
@@ -11,5 +10,4 @@ GHAndroidPlatformServices::GHAndroidPlatformServices(GHJNIMgr& jniMgr, jobject e
 	, mThreadFactory(jniMgr)
 {
 	GHDebugMessage::init(mOutputPipe);
-	GHProfiler::initProfiler(getTimeCalculator(), getThreadFactory().createMutex());
 }

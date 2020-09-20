@@ -28,24 +28,6 @@
     <Filter Include="utilities">
       <UniqueIdentifier>{72488dc5-b117-4702-bff0-a7640db7f090}</UniqueIdentifier>
     </Filter>
-    <Filter Include="property">
-      <UniqueIdentifier>{153ed5b8-026b-4937-9d2f-d0e27287af3b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="message">
-      <UniqueIdentifier>{b7e6fd77-e8ce-47db-b230-d8fe3cba1c8f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="controller">
-      <UniqueIdentifier>{55e0db80-d02c-4c16-bc18-879f8237ad60}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="statemachine">
-      <UniqueIdentifier>{1a0fb644-eef4-4746-9e3c-4181e0a513cf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="profiler">
-      <UniqueIdentifier>{f32e7f78-eb10-4699-ba03-583af0da5649}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="resource">
-      <UniqueIdentifier>{f636e220-2366-4992-882b-a7466f2326a4}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\GHPlatformIdentifiers.h" />
@@ -134,23 +116,11 @@
     <ClInclude Include="..\..\GHConnectionType.h">
       <Filter>sockets</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\GHController.h">
-      <Filter>controller</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\GHControllerMgr.h">
-      <Filter>controller</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\GHControllerTransition.h">
-      <Filter>controller</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\GHDebugMessage.h">
       <Filter>debug-output</Filter>
     </ClInclude>
     <ClInclude Include="..\..\GHDeletionHandle.h">
       <Filter>utilities</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\GHEventMgr.h">
-      <Filter>message</Filter>
     </ClInclude>
     <ClInclude Include="..\..\GHFile.h">
       <Filter>file</Filter>
@@ -167,15 +137,6 @@
     <ClInclude Include="..\..\GHFOpenFileOpener.h">
       <Filter>file</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\GHMessage.h">
-      <Filter>message</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\GHMessageHandler.h">
-      <Filter>message</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\GHMessageQueue.h">
-      <Filter>message</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\GHMutex.h">
       <Filter>thread</Filter>
     </ClInclude>
@@ -190,18 +151,6 @@
     </ClInclude>
     <ClInclude Include="..\..\GHPrioritizedList.h">
       <Filter>utilities</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\GHProfiler.h">
-      <Filter>profiler</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\GHProfileRecord.h">
-      <Filter>profiler</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\GHProperty.h">
-      <Filter>property</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\GHPropertyContainer.h">
-      <Filter>property</Filter>
     </ClInclude>
     <ClInclude Include="..\..\GHRefCounted.h">
       <Filter>utilities</Filter>
@@ -224,9 +173,6 @@
     <ClInclude Include="..\..\GHStlUtil.h">
       <Filter>utilities</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\GHStateMachine.h">
-      <Filter>statemachine</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\GHThread.h">
       <Filter>thread</Filter>
     </ClInclude>
@@ -242,35 +188,14 @@
     <ClInclude Include="..\..\GHTimeCalculator.h">
       <Filter>time</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\GHTimeUpdater.h">
-      <Filter>time</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\GHTimeVal.h">
       <Filter>time</Filter>
     </ClInclude>
     <ClInclude Include="..\..\GHXorFile.h">
       <Filter>file</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\GHTransition.h">
-      <Filter>statemachine</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\GHTypedVoidFuncRunnable.h">
       <Filter>thread</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\GHResource.h">
-      <Filter>resource</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\GHResourceCache.h">
-      <Filter>resource</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\GHResourceFactory.h">
-      <Filter>resource</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\GHResourceLoader.h">
-      <Filter>resource</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\GHRedirectResourceLoader.h">
-      <Filter>resource</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -314,17 +239,8 @@
     <ClCompile Include="..\..\GHByteStreamReader.cpp">
       <Filter>bytestream</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\GHControllerMgr.cpp">
-      <Filter>controller</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\GHControllerTransition.cpp">
-      <Filter>controller</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\GHDebugMessage.cpp">
       <Filter>debug-output</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\GHEventMgr.cpp">
-      <Filter>message</Filter>
     </ClCompile>
     <ClCompile Include="..\..\GHFileC.cpp">
       <Filter>file</Filter>
@@ -335,35 +251,11 @@
     <ClCompile Include="..\..\GHFOpenFileOpener.cpp">
       <Filter>file</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\GHMessage.cpp">
-      <Filter>message</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\GHMessageQueue.cpp">
-      <Filter>message</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\GHPrintfOutputPipe.cpp">
       <Filter>debug-output</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\GHProfiler.cpp">
-      <Filter>profiler</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\GHProfileRecord.cpp">
-      <Filter>profiler</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\GHProperty.cpp">
-      <Filter>property</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\GHPropertyContainer.cpp">
-      <Filter>property</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\GHRefCounted.cpp">
       <Filter>utilities</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\GHStateMachine.cpp">
-      <Filter>statemachine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\GHTimeUpdater.cpp">
-      <Filter>time</Filter>
     </ClCompile>
     <ClCompile Include="..\..\GHTimeVal.cpp">
       <Filter>time</Filter>
@@ -371,20 +263,8 @@
     <ClCompile Include="..\..\GHXorFile.cpp">
       <Filter>file</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\GHResource.cpp">
-      <Filter>resource</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\GHResourceCache.cpp">
-      <Filter>resource</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\GHResourceFactory.cpp">
-      <Filter>resource</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\null\GHNullPlatformServices.cpp">
       <Filter>nullplatform</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\GHRedirectResourceLoader.cpp">
-      <Filter>resource</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

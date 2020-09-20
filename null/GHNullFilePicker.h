@@ -2,19 +2,19 @@
 #pragma once
 
 #include "GHPlatform/GHFilePicker.h"
-#include "GHPlatform/GHPropertyContainer.h"
+#include "GHUtils/GHPropertyContainer.h"
 
 class GHNullFilePicker : public GHFilePicker
 {
 private:
 	virtual void pickFile(PickedCallback& callback, const std::vector<const char*> exts)
 	{
-		GHPropertyContainer result;
+		PickedCallback::Result result(0);
 		callback.handleFilePicked(result);
 	}
 	virtual void pickMultipleFiles(PickedCallback& callback, const std::vector<const char*> exts)
 	{
-		GHPropertyContainer result;
+		PickedCallback::Result result(0);
 		callback.handleFilePicked(result);
 	}
 };

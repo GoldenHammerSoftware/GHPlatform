@@ -9,9 +9,11 @@ GHTimeVal::GHTimeVal(void)
 {
 }
 
-void GHTimeVal::newFrame(void)
+void GHTimeVal::newFrame(float newTime)
 {
 	mLastTime = mTime;
+	setTime(newTime);
+	calcTimePassed();
 }
 
 void GHTimeVal::calcTimePassed(void) 
@@ -27,9 +29,9 @@ void GHTimeVal::calcTimePassed(void)
 
 void GHTimeVal::clearTimePassed(const GHTimeCalculator& timeCalculator)
 {
-	newFrame();
+	mLastTime = mTime;
 	float normalizedTime = timeCalculator.calcTime();
 	setTime(normalizedTime);
-	newFrame();
+	mLastTime = mTime;
 	calcTimePassed();
 }

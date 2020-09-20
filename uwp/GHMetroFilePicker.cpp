@@ -4,13 +4,27 @@
 #include <string.h>
 #include <wrl.h>
 #include <ppltasks.h>  
-#include "GHPlatform/GHPropertyContainer.h"
+#include "GHUtils/GHPropertyContainer.h"
 #include "GHMetroRandomAccessStream.h"
 #include "GHMetroStorageFile.h"
 #include "GHPlatform/GHPlatformIdentifiers.h"
 #include "GHMetroIdentifiers.h"
 
 using namespace concurrency;
+
+GHMetroFilePicker::PlatformResult::PlatformResult(GHMetroRandomAccessStream* ras, GHMetroStorageFile* sf)
+	: mGHStream(ras)
+	, mGHStorageFile(sf)
+{
+	if (mGHStream) mGHStream->acquire();
+	if (mGHStorageFile) mGHStorageFile->acquire();
+}
+
+GHMetroFilePicker::PlatformResult::~PlatformResult(void)
+{
+	if (mGHStream) mGHStream->release();
+	if (mGHStorageFile) mGHStorageFile->release();
+}
 
 void GHMetroFilePicker::pickFile(PickedCallback& callback, const std::vector<const char*> exts)
 {
@@ -21,7 +35,7 @@ void GHMetroFilePicker::pickFile(PickedCallback& callback, const std::vector<con
 		if (!file)
 		{
 			// return empty results.
-			GHPropertyContainer result;
+			PickedCallback::Result result(0);
 			callback.handleFilePicked(result);
 			return;
 		}
@@ -34,6 +48,7 @@ void GHMetroFilePicker::pickFile(PickedCallback& callback, const std::vector<con
 
 	});
 }
+
 
 void GHMetroFilePicker::pickMultipleFiles(PickedCallback& callback, const std::vector<const char*> exts)
 {
@@ -56,7 +71,7 @@ void GHMetroFilePicker::pickMultipleFiles(PickedCallback& callback, const std::v
 		else
 		{
 			// return empty results.
-			GHPropertyContainer result;
+			PickedCallback::Result result(0);
 			callback.handleFilePicked(result);
 			return;
 		}
@@ -78,40 +93,39 @@ Windows::Storage::Pickers::FileOpenPicker^ GHMetroFilePicker::createWindowsPicke
 		openPicker->FileTypeFilter->Append(extStr);
 	}
 
+	// todo: figure out no window set on picker exception.
+
 	return openPicker;
 }
 
 void GHMetroFilePicker::triggerCallback(PickedCallback& callback, Windows::Storage::StorageFile^ file,
 	Windows::Storage::Streams::IRandomAccessStream^ stream)
 {
-	GHPropertyContainer result;
+	GHMetroRandomAccessStream* ghStream = new GHMetroRandomAccessStream;
+	ghStream->mStream = stream;
+
+	GHMetroStorageFile* ghSF = new GHMetroStorageFile;
+	ghSF->mStorageFile = file;
+
+	GHMetroFilePicker::PlatformResult* platResult = new GHMetroFilePicker::PlatformResult(ghStream, ghSF);
+	GHFilePicker::PickedCallback::Result resultStruct(platResult);
+
 	char* pathbuf = new char[file->Path->Length() + 1];
 	memset(pathbuf, 0, file->Path->Length() + 1);
 	wcstombs(pathbuf, file->Path->Data(), file->Path->Length());
-	GHString* pathstr = new GHString(pathbuf, GHString::CHT_CLAIM);
-	result.setProperty(GHPlatformIdentifiers::FILEPATH, GHProperty(pathstr->getChars(), new GHRefCountedType<GHString>(pathstr)));
+	resultStruct.mFilePath.setChars(pathbuf, GHString::CHT_CLAIM);
 
 	char* namebuf = new char[file->Name->Length() + 1];
 	memset(namebuf, 0, file->Name->Length() + 1);
 	wcstombs(namebuf, file->Name->Data(), file->Name->Length());
-	GHString* namestr = new GHString(namebuf, GHString::CHT_CLAIM);
-	result.setProperty(GHPlatformIdentifiers::FILENAME, GHProperty(namestr->getChars(), new GHRefCountedType<GHString>(namestr)));
-
-	GHMetroRandomAccessStream* ghStream = new GHMetroRandomAccessStream;
-	ghStream->mStream = stream;
-	result.setProperty(GHMetroIdentifiers::FILESTREAM, GHProperty(ghStream, ghStream));
-
-	GHMetroStorageFile* ghSF = new GHMetroStorageFile;
-	ghSF->mStorageFile = file;
-	result.setProperty(GHMetroIdentifiers::STORAGEFILE, GHProperty(ghSF, ghSF));
+	resultStruct.mFileName.setChars(pathbuf, GHString::CHT_COPY);
 
 	// store out the result for later opening without a picker.
 	auto futureAccessToken = Windows::Storage::AccessCache::StorageApplicationPermissions::FutureAccessList->Add(file);
 	char* tokenBuff = new char[futureAccessToken->Length() + 1];
 	memset(tokenBuff, 0, futureAccessToken->Length() + 1);
 	wcstombs(tokenBuff, futureAccessToken->Data(), futureAccessToken->Length());
-	GHString* tokenStr = new GHString(tokenBuff, GHString::CHT_CLAIM);
-	result.setProperty(GHPlatformIdentifiers::FILETOKEN, GHProperty(tokenStr->getChars(), new GHRefCountedType<GHString>(tokenStr)));
+	resultStruct.mFileToken.setChars(tokenBuff, GHString::CHT_CLAIM);
 
-	callback.handleFilePicked(result);
+	callback.handleFilePicked(resultStruct);
 }
