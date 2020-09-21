@@ -9,7 +9,7 @@ public:
 	GHWinSockSocketMgr(void);
 	~GHWinSockSocketMgr(void);
 
-	virtual GHSocket* createSocket(const char* addr, const char* port, GHConnectionType type);
+	virtual GHSocket* createSocket(const char* addr, const char* port, GHConnectionType type) const;
 
 private:
 	void initWinSock(void);

@@ -13,5 +13,5 @@ public:
 
 	// create a connected socket if possible, otherwise return 0.
 	// caller is expected to delete.
-	virtual GHSocket* createSocket(const char* addr, const char* port, GHConnectionType type) = 0;
+	virtual GHSocket* createSocket(const char* addr, const char* port, GHConnectionType type) const = 0;
 };

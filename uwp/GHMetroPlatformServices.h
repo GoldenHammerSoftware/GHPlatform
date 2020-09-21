@@ -18,9 +18,9 @@ public:
 
 	virtual GHFileOpener& getFileOpener(void) override { return mFileOpener; }
 	virtual GHFilePicker& getFilePicker(void) override { return mFilePicker; }
-	virtual GHThreadFactory& getThreadFactory(void) override { return mThreadFactory; }
-	virtual GHTimeCalculator& getTimeCalculator(void) override { return mTimeCalculator; }
-	virtual GHSocketMgr& getSocketMgr(void) override { return mSocketMgr; }
+	virtual const GHThreadFactory& getThreadFactory(void) const override { return mThreadFactory; }
+	virtual const GHTimeCalculator& getTimeCalculator(void) const override { return mTimeCalculator; }
+	virtual const GHSocketMgr& getSocketMgr(void) const override { return mSocketMgr; }
 
 private:
 	GHMetroFileOpener mFileOpener;

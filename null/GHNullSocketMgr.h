@@ -6,5 +6,5 @@
 class GHNullSocketMgr : public GHSocketMgr
 {
 public:
-	virtual GHSocket* createSocket(const char* addr, const char* port, GHConnectionType type) { return 0; }
+	virtual GHSocket* createSocket(const char* addr, const char* port, GHConnectionType type) const { return 0; }
 };

@@ -20,9 +20,9 @@ public:
 
 	virtual GHFileOpener& getFileOpener(void) = 0;
 	virtual GHFilePicker& getFilePicker(void) = 0;
-	virtual const GHThreadFactory& getThreadFactory(void) = 0;
-	virtual const GHTimeCalculator& getTimeCalculator(void) = 0;
-	virtual GHSocketMgr& getSocketMgr(void) = 0;
+	virtual const GHThreadFactory& getThreadFactory(void) const = 0;
+	virtual const GHTimeCalculator& getTimeCalculator(void) const = 0;
+	virtual const GHSocketMgr& getSocketMgr(void) const = 0;
 
 	GHStringIdFactory& getIdFactory(void) { return mIdFactory; }
 	GHIdentifierMap<int>& getEnumStore(void) { return mEnumStore; }

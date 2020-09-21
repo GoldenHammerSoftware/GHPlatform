@@ -3,7 +3,7 @@
 #include "GHMetroSocketTCP.h"
 #include "GHPlatform/GHDebugMessage.h"
 
-GHSocket* GHMetroSocketMgr::createSocket(const char* addr, const char* port, GHConnectionType type)
+GHSocket* GHMetroSocketMgr::createSocket(const char* addr, const char* port, GHConnectionType type) const
 {
 	if (type == GHConnectionType::CT_UDP)
 	{

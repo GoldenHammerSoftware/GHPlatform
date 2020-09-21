@@ -17,11 +17,13 @@ GHWinSockSocketMgr::~GHWinSockSocketMgr(void)
 	}
 }
 
-GHSocket* GHWinSockSocketMgr::createSocket(const char* addr, const char* port, GHConnectionType type)
+GHSocket* GHWinSockSocketMgr::createSocket(const char* addr, const char* port, GHConnectionType type) const
 {
 	if (!mWinSockInitialized)
 	{
-		initWinSock();
+		// cheating const here for a lazy init.
+		GHWinSockSocketMgr* nonConstThis = const_cast<GHWinSockSocketMgr*>(this);
+		nonConstThis->initWinSock();
 		if (!mWinSockInitialized) {
 			return 0;
 		}

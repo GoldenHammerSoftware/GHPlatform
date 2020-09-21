@@ -6,5 +6,5 @@
 class GHMetroSocketMgr : public GHSocketMgr
 {
 public:
-	virtual GHSocket* createSocket(const char* addr, const char* port, GHConnectionType type);
+	virtual GHSocket* createSocket(const char* addr, const char* port, GHConnectionType type) const;
 };
