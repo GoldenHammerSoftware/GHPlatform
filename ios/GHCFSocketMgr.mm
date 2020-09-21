@@ -8,7 +8,7 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 
-GHSocket* GHCFSocketMgr::createSocket(const char* addrChr, const char* port, GHConnectionType type)
+GHSocket* GHCFSocketMgr::createSocket(const char* addrChr, const char* port, GHConnectionType type) const
 {
     // todo: udp
     assert(type == CT_TCP);
