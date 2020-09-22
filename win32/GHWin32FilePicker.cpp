@@ -10,7 +10,7 @@ GHWin32FilePicker::GHWin32FilePicker(HWND hwnd)
 {
 }
 
-void GHWin32FilePicker::pickFile(PickedCallback& callback, const std::vector<const char*> exts)
+void GHWin32FilePicker::pickFile(PickedCallback& callback, const std::vector<const char*> exts) const
 {
 	CComPtr<IFileOpenDialog> pDlg;
 	wchar_t* wExts = 0;
@@ -48,7 +48,7 @@ void GHWin32FilePicker::pickFile(PickedCallback& callback, const std::vector<con
 	}
 }
 
-void GHWin32FilePicker::pickMultipleFiles(PickedCallback& callback, const std::vector<const char*> exts)
+void GHWin32FilePicker::pickMultipleFiles(PickedCallback& callback, const std::vector<const char*> exts) const
 {
 	CComPtr<IFileOpenDialog> pDlg;
 	wchar_t* wExts = 0;
@@ -99,7 +99,7 @@ void GHWin32FilePicker::pickMultipleFiles(PickedCallback& callback, const std::v
 }
 
 bool GHWin32FilePicker::createWin32Picker(const std::vector<const char*>& exts, CComPtr<IFileOpenDialog>& pDlg,
-	wchar_t*& wExts)
+	wchar_t*& wExts) const
 {
 	HRESULT hr;
 
@@ -132,7 +132,7 @@ bool GHWin32FilePicker::createWin32Picker(const std::vector<const char*>& exts, 
 	return true;
 }
 
-void GHWin32FilePicker::sendPickResults(PickedCallback& callback, IShellItem* pItem)
+void GHWin32FilePicker::sendPickResults(PickedCallback& callback, IShellItem* pItem) const
 {
 	PickedCallback::Result result(0);
 
