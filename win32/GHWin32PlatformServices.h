@@ -15,7 +15,7 @@ public:
 	~GHWin32PlatformServices(void);
 
 	virtual GHFileOpener& getFileOpener(void) override { return mFileOpener; }
-	virtual GHFilePicker& getFilePicker(void) override { return mFilePicker; }
+	virtual const GHFilePicker& getFilePicker(void) const override { return mFilePicker; }
 	virtual const GHThreadFactory& getThreadFactory(void) const override { return mThreadFactory; }
 	virtual const GHTimeCalculator& getTimeCalculator(void) const override { return mTimeCalculator; }
 	virtual const GHSocketMgr& getSocketMgr(void) const override { return mSocketMgr; }

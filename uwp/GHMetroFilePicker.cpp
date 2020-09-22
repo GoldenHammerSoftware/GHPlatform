@@ -26,7 +26,7 @@ GHMetroFilePicker::PlatformResult::~PlatformResult(void)
 	if (mGHStorageFile) mGHStorageFile->release();
 }
 
-void GHMetroFilePicker::pickFile(PickedCallback& callback, const std::vector<const char*> exts)
+void GHMetroFilePicker::pickFile(PickedCallback& callback, const std::vector<const char*> exts) const
 {
 	Windows::Storage::Pickers::FileOpenPicker^ openPicker = createWindowsPicker(exts);
 
@@ -50,7 +50,7 @@ void GHMetroFilePicker::pickFile(PickedCallback& callback, const std::vector<con
 }
 
 
-void GHMetroFilePicker::pickMultipleFiles(PickedCallback& callback, const std::vector<const char*> exts)
+void GHMetroFilePicker::pickMultipleFiles(PickedCallback& callback, const std::vector<const char*> exts) const
 {
 	Windows::Storage::Pickers::FileOpenPicker^ openPicker = createWindowsPicker(exts);
 
@@ -78,7 +78,7 @@ void GHMetroFilePicker::pickMultipleFiles(PickedCallback& callback, const std::v
 	});
 }
 
-Windows::Storage::Pickers::FileOpenPicker^ GHMetroFilePicker::createWindowsPicker(const std::vector<const char*> exts)
+Windows::Storage::Pickers::FileOpenPicker^ GHMetroFilePicker::createWindowsPicker(const std::vector<const char*> exts) const
 {
 	Windows::Storage::Pickers::FileOpenPicker^ openPicker = ref new Windows::Storage::Pickers::FileOpenPicker();
 	openPicker->ViewMode = Windows::Storage::Pickers::PickerViewMode::List;
@@ -99,7 +99,7 @@ Windows::Storage::Pickers::FileOpenPicker^ GHMetroFilePicker::createWindowsPicke
 }
 
 void GHMetroFilePicker::triggerCallback(PickedCallback& callback, Windows::Storage::StorageFile^ file,
-	Windows::Storage::Streams::IRandomAccessStream^ stream)
+	Windows::Storage::Streams::IRandomAccessStream^ stream) const
 {
 	GHMetroRandomAccessStream* ghStream = new GHMetroRandomAccessStream;
 	ghStream->mStream = stream;

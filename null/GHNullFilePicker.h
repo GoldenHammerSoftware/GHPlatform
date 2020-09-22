@@ -7,12 +7,12 @@
 class GHNullFilePicker : public GHFilePicker
 {
 private:
-	virtual void pickFile(PickedCallback& callback, const std::vector<const char*> exts)
+	virtual void pickFile(PickedCallback& callback, const std::vector<const char*> exts) const
 	{
 		PickedCallback::Result result(0);
 		callback.handleFilePicked(result);
 	}
-	virtual void pickMultipleFiles(PickedCallback& callback, const std::vector<const char*> exts)
+	virtual void pickMultipleFiles(PickedCallback& callback, const std::vector<const char*> exts) const
 	{
 		PickedCallback::Result result(0);
 		callback.handleFilePicked(result);

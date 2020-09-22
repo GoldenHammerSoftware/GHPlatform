@@ -19,7 +19,7 @@ public:
 	virtual ~GHPlatformServices(void);
 
 	virtual GHFileOpener& getFileOpener(void) = 0;
-	virtual GHFilePicker& getFilePicker(void) = 0;
+	virtual const GHFilePicker& getFilePicker(void) const = 0;
 	virtual const GHThreadFactory& getThreadFactory(void) const = 0;
 	virtual const GHTimeCalculator& getTimeCalculator(void) const = 0;
 	virtual const GHSocketMgr& getSocketMgr(void) const = 0;

@@ -23,13 +23,13 @@ public:
 	};
 
 public:
-	virtual void pickFile(PickedCallback& callback, const std::vector<const char*> exts);
-	virtual void pickMultipleFiles(PickedCallback& callback, const std::vector<const char*> exts);
+	virtual void pickFile(PickedCallback& callback, const std::vector<const char*> exts) const;
+	virtual void pickMultipleFiles(PickedCallback& callback, const std::vector<const char*> exts) const;
 
 private:
 	// initialize a windows file picker.
-	Windows::Storage::Pickers::FileOpenPicker^ createWindowsPicker(const std::vector<const char*> exts);
+	Windows::Storage::Pickers::FileOpenPicker^ createWindowsPicker(const std::vector<const char*> exts) const;
 	// let the game know about a file pick result.
 	void triggerCallback(PickedCallback& callback, Windows::Storage::StorageFile^ file,
-		Windows::Storage::Streams::IRandomAccessStream^ stream);
+		Windows::Storage::Streams::IRandomAccessStream^ stream) const;
 };
