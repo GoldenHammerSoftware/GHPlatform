@@ -14,11 +14,11 @@ class GHiOSPlatformServices : public GHPlatformServices
 public:
     GHiOSPlatformServices(void);
     
-    virtual GHFileOpener& getFileOpener(void) { return mFileOpener; }
-    virtual GHFilePicker& getFilePicker(void) { return mFilePicker; }
-    virtual const GHThreadFactory& getThreadFactory(void) { return mThreadFactory; }
-    virtual const GHTimeCalculator& getTimeCalculator(void) { return mTimeCalculator; }
-    virtual GHSocketMgr& getSocketMgr(void) { return mSocketMgr; }
+    virtual GHFileOpener& getFileOpener(void) override { return mFileOpener; }
+    virtual const GHFilePicker& getFilePicker(void) const override { return mFilePicker; }
+    virtual const GHThreadFactory& getThreadFactory(void) const override { return mThreadFactory; }
+    virtual const GHTimeCalculator& getTimeCalculator(void) const override { return mTimeCalculator; }
+    virtual const GHSocketMgr& getSocketMgr(void) const override{ return mSocketMgr; }
     
 private:
     GHiOSFileOpener mFileOpener;
